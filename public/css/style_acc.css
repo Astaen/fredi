@@ -1,0 +1,470 @@
+@font-face {
+	font-family: Fontello;
+	src: url(../resources/font/fontello.ttf);
+}
+
+@keyframes appear {
+	0% {opacity: 0;}
+	100% { opacity: 1;}
+}
+
+@-webkit-keyframes appear {
+	0% {opacity: 0;}
+	100% { opacity: 1;}
+}
+
+* {margin: 0; padding: 0;}
+/* BODY */
+body {
+	background: #f4e4e0;
+	font-family: Roboto;
+}
+
+body.login {
+	-webkit-animation: appear 0.2s ease;
+	-o-animation: appear 0.2s ease;
+	animation: appear 0.2s ease;
+}
+
+strong {
+    font-weight: 500;
+    font-family: Roboto;
+}
+
+/* 																				ENTETE */
+
+header {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 4em;
+    background: white;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px #c17664;
+  	padding: 0 60px;
+  	box-sizing: border-box;
+  	color: #c17664;    
+}
+
+img#logo {
+  position: relative;
+  width: 80px;
+  top: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span.ariane, span.welcome {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 4em;
+    position: relative;
+}
+
+span.ariane {
+	padding-left: 20px;
+	margin-left: 20px;	
+}
+
+span.ariane:before {
+    display: inline-block;
+    content: "";
+    width: 1px;
+    position: absolute;
+    left: 0;
+    top: 15%;
+    background: #c17664;
+    bottom: 15%;
+}
+
+span.welcome {
+    position: absolute;
+    right: 30px;
+}
+
+nav {
+	color: #c17664;
+}
+
+#main {
+	display: block;
+	max-width: 1200px;
+	margin: auto;
+	position: relative;
+}
+
+#entry-content {
+	color: #c17664;
+}
+
+/* 																				NAVIGATION */
+
+nav, #entry-content {
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 0 0 10px #c17664;
+    background: white;
+    border-radius: 5px;
+}
+
+nav {
+    min-width: 300px;
+    background: white;
+    margin: 75px 20px 0 20px;
+    position: relative;
+}
+
+nav:before {
+    display: block;
+    content: "";
+    background: red;
+    width: 150px;
+    height: 75px;
+    position: absolute;
+    left: 65px;
+    top: -75px;
+    border-radius: 150px 150px 0 0;
+    border: 10px solid white;
+    box-shadow: 0 0 10px #c17664;
+    z-index: -1;
+}
+
+nav > img.avatar {
+    width: 150px;
+    margin: auto;
+    display: block;
+    margin-top: -75px;
+    border-radius: 150px;
+    border: 10px solid white;
+}
+
+ul.nav-menu {
+    list-style: none;
+}
+
+p.user-name {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+p.user-name, p.user-hiring-date {
+    text-align: center;
+}
+
+div#entry-content {
+    max-width: 820px;
+    position: absolute;
+    left: 360px;
+    right: 20px;
+    top: 0;
+	padding-bottom: 3em;    
+}
+
+ul.nav-menu li a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: inherit;
+}
+
+ul.nav-menu li {
+    text-align: center;
+    line-height: 3em;
+    border-bottom: 1px solid #f4e4e0;
+}
+
+.bio {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f4e4e0;
+}
+
+ul.nav-menu li:hover {
+    background: #F7F7F7;
+}
+
+ul.nav-menu li:active {
+    box-shadow: 0 2px 1px #f4e4e0 inset;
+}
+
+/* 																				CORPS */
+.summary-detail div {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 20px;
+}
+
+.summary-detail:after {
+    content: "";    display: inline-block;    width: 100%;
+    margin: 0;
+}
+
+.summary-detail {
+    text-align: justify;
+    padding: 20px 60px 0 60px;
+    background: #f4e4e0;
+}
+
+.summary-detail div span:last-child {
+    display: block;
+    font-size: 4em;
+    font-weight: 100;
+}
+
+.summary-header, .history-header {
+  	padding: 20px 20px 0 20px;
+    font-size: 1.2em;
+}
+
+.summary-header span:last-child {
+    position: absolute;
+    right: 20px;
+}
+
+.summary-header:after, .history-header:after {
+    content: "";
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 1px;
+    margin-top: 15px;
+    background: #c17664;
+}
+
+.entry-header {
+    padding: 20px 20px 0 20px;
+    font-size: 1.2em;
+}
+
+.entry-header:after {
+    content: "";
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 1px;
+    margin-top: 15px;
+    background: #c17664;
+}
+
+button {
+    background: white;
+    border: 1px solid #d19587;
+    color: #d19587;
+    padding: 10px 15px;
+    border-radius: 2px;
+}
+
+button#add {
+  position: absolute;
+  right: 20px;
+  padding-left: 35px;
+  background: url('/img/add.png') no-repeat;
+  background-size: 20px;
+  background-position: 11px 8px;
+  top: 10px;
+  transition: padding 0.2s ease;
+  -webkit-transition: padding 0.2s ease;
+  font-weight: 600;
+}
+
+button#add:hover {
+    padding-left: 40px;
+    background-color: #f4e4e0;
+    cursor: pointer;
+}
+
+button:active, button:hover, button:focus {
+	outline: none;
+}
+
+.total {
+    display: table;
+}
+
+.total span {
+    display: table-cell;
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    color: #d19587;
+}
+
+.history-list ul {
+    list-style: none;
+}
+
+.history-list ul li:nth-child(even) {
+    background: #f4e4e0;
+}
+
+.history-list ul li {
+    line-height: 3em;
+    padding: 0 20px;
+}
+
+.history-list a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.history-list li:hover {
+    background: rgba(209,149,135,0.7)!important;
+    cursor: pointer;
+}
+
+a.more {
+    display: block;
+    text-align: center;
+    background: #f4e4e0;
+    padding: 5px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+a.more:hover {
+    background: #d19587;
+    color: #f4e4e0;
+}
+
+div#history {
+    margin-top: 2em;
+}
+
+span.proprietaire {
+    position: absolute;
+    left: 200px;
+}
+span.etat {
+    position: absolute;
+    right: 20px;
+}
+
+input {
+    padding: 5px 15px;
+    border: 1px solid rgb(87, 136, 193);
+    border-radius: 2px;
+    line-height: 2em;
+    color: rgb(87, 136, 193);
+    font-size: 1.1em;
+    outline: none;
+    margin: 20px 0;
+    transition: background 0.1s ease;
+    -webkit-transition: background 0.1s ease;
+}
+
+/*  BARRE DE RECHERCHE  */
+.search { /* Formulaire */
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+    top: 10px;
+    height: 35px;
+}
+input.search-history {
+    border: 1px solid #c17664;
+}
+.search-history { margin: 0px; padding: 0 10px; } /* Input */
+.search-history::-webkit-input-placeholder {color: #c17664;} /* Placeholder */
+.search-icon:before{ /* Icone recherche */
+    content: "\e800";
+    font-family: "Fontello";
+    color: #c17664;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+    padding: 9px 20px;
+    border-left:  1px solid #c17664;
+}
+.search-filter {
+    padding: 20px 20px;
+    font-size: 1em;
+}
+.search-filter:after {
+    content: "";
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 1px;
+    margin-top: 15px;
+    background: #c17664;
+}
+.search-filter-value {
+    padding: 5px;
+    color: #c17664;
+    font-size: 1em;
+}
+
+p.no-frais {
+    text-align: center;
+}
+
+.amount-details {
+    text-align: right;
+    font-size: 1em;
+    padding: 0 20px;
+    color: #c17664;
+}
+
+#form-change-etat {
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+    top: 10px;
+    height: 36px;
+}
+#form-change-etat input {
+    margin: 0;
+    padding: 0 10px;
+    background: #f4e4e0;
+    color: inherit;
+    border: 1px solid #d19587;
+    font-size: 1.1em;
+    line-height: 36px;
+    cursor: pointer;
+}
+#form-change-etat input:hover {background: rgba(209,149,135, 0.5);}
+
+select#action-etat {
+    padding: 5px;
+    border: 1px solid #c17664;
+    border-radius: 2px;
+    color: #c17664;
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+}
+
+table.forf {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+table.forf th {
+    background: rgba(209,149,135, 0.5);
+    font-size: 1em;
+    padding: 5px;
+}
+
+table.forf td {
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+table.forf td:last-child {
+    border-right: none;
+}
+
+table.forf tr td:last-child, table.forf tr th:last-child {
+    width: 150px;
+}
+table.forf tr:nth-child(odd) {
+    background: #f4e4e0;
+}
+
+span.alert-success {color: #26ad31; display: none;}
+span.alert-error {color: #e62222; display: none;}
