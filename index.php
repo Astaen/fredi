@@ -2,7 +2,7 @@
 session_start();
 require 'vendor/autoload.php';
 
-include("models/user.php");
+include("models/User.php");
 
 $user = new User();
 $user->create(Array(
