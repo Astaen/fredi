@@ -3,13 +3,21 @@ session_start();
 require 'vendor/autoload.php';
 
 include("models/User.php");
+include("models/Note.php");
+include("models/Fee.php");
 
-$user = new User();
-$user->create(Array(
-		'f_name' => 'Sofiane',
-		'l_name' => 'Hamadi'
-	));
-$user->save();
+//Instance de Slim
+$app = new \Slim\Slim();
 
-//bleh
+
+$app->get('/', function () {
+    echo "Page d'accueil";
+});
+
+$app->get('/hello/:name', function ($name) {
+    echo "Hello, $name";
+});
+
+$app->run();
+
 ?>

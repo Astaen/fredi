@@ -4,14 +4,14 @@
  */
 class Fee
 {
-  private id_fee;
-  private id_note;
-  private id_fee_type;
-  private date_fee;
-  private caption;
-  private amount;
+  private $id_fee;
+  private $id_note;
+  private $id_fee_type;
+  private $date_fee;
+  private $caption;
+  private $amount;
 
-  function __construct(argument)
+  function __construct()
   {
     # code...
   }

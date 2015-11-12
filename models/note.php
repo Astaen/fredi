@@ -4,10 +4,10 @@
  */
 class Note
 {
-  private id_note = null;
-  private id_note_state = null;
-  private id_user = null;
-  public year = null;
+  private $id_note = null;
+  private $id_note_state = null;
+  private $id_user = null;
+  public $year = null;
 
 
   public function __construct() {
