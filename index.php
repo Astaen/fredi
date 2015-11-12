@@ -14,19 +14,20 @@ require("models/Fee.php");
 $app = new \Slim\Slim();
 
 $app->config(array(
-	'templates.path' => '../views'
+	'templates.path' => './views'
 ));
 
-$app->get('/', function() {
-	echo "toutes les notes";
+$app->get('/', function() use($app) {
 	$note = new Note();
-	var_dump($note->fetchAll(2, "2014"));
+	$notes = $note->fetchAll(2);	
+	$app->render('/user/main.php', array('notes' => $notes));
 });
 
 $app->get('/hello/:name', function ($name) {
     echo "Hello, $name";
 });
 
+$app->render('header.php');
 $app->run();
-
+$app->render('footer.php');
 ?>

@@ -23,7 +23,7 @@ class Note
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
         return $res->fetch();
-        
+
     }
 
     public function fetchAll($id_user = null, $year = null) {
@@ -35,8 +35,6 @@ class Note
         if(!is_null($year)) {
           $query .= ' AND YEAR(YEAR) = "'. $year . '"';
         }
-
-        var_dump($query);
 
         $bdd = new BDD();
         $bdd = $bdd->connect();
