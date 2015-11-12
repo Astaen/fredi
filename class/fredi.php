@@ -7,7 +7,7 @@
 
 date_default_timezone_set("UTC");
 
-class GSB {
+class Fredi {
 
 	/************************* 
 	* Attributs 
@@ -19,6 +19,7 @@ class GSB {
 	public $location = "";
 	public $SITE_PATH;
 	public $INCLUDE_PATH;
+	public $is_connected = false;
 
 	/************************* 
 	* Constructeurs 
@@ -62,6 +63,13 @@ class GSB {
 		return $bdd;
 	}
 
+	/**
+	 * Affiche le <head> de chaque page
+	 *
+	 */ 
+	public function get_header() {
+		include('views/header.php');
+	}
 
 	/**
 	 * Vérifie si l'utilisateur éxiste dans la base de donnée
@@ -562,7 +570,5 @@ class GSB {
 			return false;
 	}
 }
-
-$gsb = new GSB();
 
 ?>

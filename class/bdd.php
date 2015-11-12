@@ -2,7 +2,7 @@
 
 class BDD {
 
-	private $connection;
+	public $connection;
 
 	public function __construct() {
 		try {
@@ -12,6 +12,10 @@ class BDD {
 		}
 		$bdd->query('SET NAMES utf8');
 		$this->connection = $bdd;
+	}
+
+	public function connect() {
+		return $this->connection;
 	}
 
 	public function insert($tablename, $obj) {
