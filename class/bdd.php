@@ -8,7 +8,7 @@ class BDD {
 		try {
 			$bdd = new PDO('mysql:host=localhost;dbname=fredi', 'root', 'root');
 			$bdd->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
-			$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+			$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch (Exception $e) {
 			die('Erreur : ' . $e->getMessage());
 		}

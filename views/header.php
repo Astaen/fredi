@@ -28,10 +28,9 @@
 				<li><a href="#">Accueil</a></li>
 				<li><a href="#">Gestion des frais</a></li>
 				<!-- Dropdown Trigger -->
-				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-			</ul>    	
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Autres<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
 	    </div>
 	  </nav>
 
   	<div class="container">
-

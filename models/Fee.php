@@ -11,26 +11,28 @@ class Fee
   private $caption;
   private $amount;
 
-  function __construct()
-  {
-    # code...
-  }
-
-  public function get($id_fee = null) {
-    $query = "SELECT * FROM FEE WHERE 1";
-    if(!is_null($id_fee)) {
-      $query .= " AND ID_FEE = " . $id_fee;
+  function __construct($args = null) {
+    if($args) {
+        foreach ($args as $key => $value) {
+            if(property_exists("Fee", $key)) {
+                $this->$key = $value;
+            }
+        }
     }
-    // faire requete
   }
 
-  public function create($args) {
-    $this->id_fee       = $args['id_fee'];
-    $this->id_note      = $args['id_note'];
-    $this->id_fee_type  = $args['id_fee_type'];
-    $this->date_fee     = $args['date_fee'];
-    $this->caption      = $args['caption'];
-    $this->amount       = $args['amount'];
+  public function fetchAll($id_note = null) {
+
+      $query = "SELECT * FROM fee WHERE 1";
+      if(!is_null($id_note)) {
+        $query .= " AND ID_NOTE = " . $id_note;
+      }
+
+      $bdd = new BDD();
+      $bdd = $bdd->connect();
+      $res = $bdd->query($query);
+      return $res->fetchAll();
+      
   }
 
   public function save() {

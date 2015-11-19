@@ -17,7 +17,7 @@ class Note
                 if(property_exists("Note", $key)) {
                     $this->$key = $value;
                 }
-            }           
+            }
         }
     }
 
@@ -51,6 +51,13 @@ class Note
         $res = $bdd->query($query);
         return $res->fetchAll();
 
+    }
+
+    public function getNoteFees() {
+      $fee = new Fee();
+      $fees = $fee->fetchAll($this->id_note);
+      $this->fees = $fees;
+      return $this;
     }
 
     public function save() {
