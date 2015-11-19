@@ -1,7 +1,5 @@
 <?php
 
-require "class/bdd.php";
-
 class User {
 
 	private $id_user;
@@ -40,19 +38,40 @@ class User {
 		}
 
 		return $this;
+
     }
 
-    public function fetchAll($id_type = null) {
+    public function exists($email, $password) {
+    	if($this->fetchAll(null, $email, hash("sha256", $password)) ) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+
+    public function fetchAll($id_type = null, $email = null, $password = null) {
 
         $query = "SELECT * FROM user WHERE 1";
         if(!is_null($id_type)) {
           $query .= " AND ID_TYPE = " . $id_type;
         }
+        if(!is_null($email)) {
+          $query .= " AND MAIL = " . $email;
+        }
+        if(!is_null($password)) {
+          $query .= " AND PASSWORD = " . $password;
+        }                
+
+        var_dump($query);
 
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
-        return $res->fetchAll();
+        if($res) {
+        	return $res->fetchAll();
+        } else {
+        	return false;
+        }
 
     }
 

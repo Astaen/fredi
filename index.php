@@ -8,6 +8,7 @@ ini_set('xdebug.var_display_max_data', 1024);
 require 'vendor/autoload.php';
 
 //importation des fonctions de
+require("class/bdd.php");
 require("class/fredi.php");
 
 //importation des modèles
@@ -22,9 +23,32 @@ $app->config(array(
 	'templates.path' => './views'
 ));
 
+/*=============================
+=            Login            =
+=============================*/
+
 $app->get('/login', function() use($app) {
 	$app->render('login.php');
 });
+
+$app->post('/login', function() use($app) {
+	$post = $app->request->post();
+	$user = new User();
+	$member = new Member();
+
+	if( $user->exists($post['email'], $post['password']) ) {
+		$member->fetch($user->id_user);
+		$_SESSION['logged'] = true;
+		$_SESSION['userinfo'] = $member;
+		var_dump($_SESSION);
+	} else {
+		$err = "Email ou mot de passe incorrect.";
+		$app->render('login.php');
+	}
+
+});
+
+/*=====  End of Login  ======*/
 
 $app->get('/', function() use($app) {
 	$note = new Note();

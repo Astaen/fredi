@@ -1,8 +1,4 @@
 <?php
-/**
- * Gestion des Notes
- */
-// require('/class/bdd.php');
 
 class Note
 {
