@@ -17,29 +17,46 @@ class User {
 	public $postal_code;
 	public $city;
 
-	public function __construct() {
-		$this->id_user = null;
-		$this->id_type = null;
-		$this->id_league = null;
-		$this->licence_num = null;
-		$this->f_name = null;
-		$this->l_name = null;
-		$this->birthdate = null;
-		$this->mail = null;
-		$this->password = null;
-		$this->adress = null;
-		$this->postal_code = null;
-		$this->city = null;
-	}
+    public function __construct($args = null) {
+        if($args) {
+            foreach ($args as $key => $value) {
+                if(property_exists("User", $key)) {
+                    $this->$key = $value;
+                }
+            }           
+        }
+    }
 
-	public function create($args) {
-		$args['f_name'] ? $this->f_name = $args['f_name']: false;
-		$args['l_name'] ? $this->l_name = $args['l_name']: false;
-	}
+    public function fetch($id) {
+
+        $query = "SELECT * FROM user WHERE id_user = ".$id;
+        $bdd = new BDD();
+        $bdd = $bdd->connect();
+        $req = $bdd->query($query);
+        $res = $req->fetch();
+
+		foreach ($res as $key => $value) {
+			$this->$key = $value;
+		}
+
+		return $this;
+    }
+
+    public function fetchAll($id_type = null) {
+
+        $query = "SELECT * FROM user WHERE 1";
+        if(!is_null($id_type)) {
+          $query .= " AND ID_TYPE = " . $id_type;
+        }
+
+        $bdd = new BDD();
+        $bdd = $bdd->connect();
+        $res = $bdd->query($query);
+        return $res->fetchAll();
+
+    }
 
 	public function save() {
-		$bdd = new BDD();
-		$bdd->insert("user", $this);
-		// requete sql
+
 	}
 }

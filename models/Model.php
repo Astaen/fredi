@@ -4,36 +4,21 @@
  */
 // require('/class/bdd.php');
 
-class Note
+class Note extends Model
 {
-    private $id_note = null;
-    private $id_note_state = null;
-    private $id_user = null;
-    public $year = null;
 
-    public function __construct($args = null) {
-        if($args) {
-            foreach ($args as $key => $value) {
-                if(property_exists("Note", $key)) {
-                    $this->$key = $value;
-                }
-            }           
-        }
+    public function __construct() {
+
     }
 
-    public function fetch($id) {
+    public function fetch($query) {
 
-        $query = "SELECT * FROM note WHERE id_note = ".$id;
+        $query = "";
         $bdd = new BDD();
         $bdd = $bdd->connect();
-        $req = $bdd->query($query);
-        $res = $req->fetch();
+        $res = $bdd->query($query);
+        return $res->fetch();
 
-        foreach ($res as $key => $value) {
-            $this->$key = $value;
-        }
-
-        return $this;
     }
 
     public function fetchAll($id_user = null, $year = null) {
@@ -50,6 +35,14 @@ class Note
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
         return $res->fetchAll();
+
+    }
+
+    public function create($args) {
+
+        $this->id_note_state = $args['id_note_state'];
+        $this->id_user = $args['id_user'];
+        $this->year = $args['year'];
 
     }
 

@@ -18,15 +18,14 @@ $app->config(array(
 ));
 
 $app->get('/login', function() use($app) {
-	$app->render('login.php');
+	echo "connard";
+	// $app->render('login.php');
 });
 
 $app->get('/', function() use($app) {
 	$note = new Note();
-	$notes = $note->fetchAll(2);
-
-	$member = (object) ['F_NAME' => 'Michel', 'L_NAME' => 'Blanc', 'LICENCE_NUM' => '170540010254'];
-	$app->render('user/main.php', array('notes' => $notes, 'member' => $member));
+	$notes = $note->fetchAll(2);	
+	$app->render('user/main.php', array('notes' => $notes));
 });
 
 
