@@ -19,7 +19,7 @@ class Note
 
     public function fetch($id) {
 
-        $query = "SELECT * FROM note WHERE id_note = ".$id;
+        $query = "SELECT `ID_NOTE`, `ID_USER`,`note`.`ID_NOTE_STATE`, `YEAR`, `LIBELLE` FROM `note`, `note_state` WHERE note.id_note_state = note_state.id_note_state AND id_note = ".$id;
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $req = $bdd->query($query);
@@ -31,12 +31,16 @@ class Note
 
         $this->fees = getNoteFees();
         
+        foreach ($this->fees as $fee) {
+            $this->total += $fee->amount;
+        }
+
         return $this;
     }
 
     public function fetchAll($id_user = null, $year = null) {
 
-        $query = "SELECT * FROM note WHERE 1";
+        $query = "SELECT `ID_NOTE`, `ID_USER`,`note`.`ID_NOTE_STATE`, `YEAR`, `LIBELLE` FROM `note`, `note_state` WHERE note.id_note_state = note_state.id_note_state AND 1";
         if(!is_null($id_user)) {
           $query .= " AND ID_USER = " . $id_user;
         }
@@ -52,6 +56,9 @@ class Note
         //get note fees
         foreach ($res as $el) {
             $el->fees = $this->getNoteFees($el->id_note);
+            foreach ($el->fees as $fee) {
+                $el->total += $fee->amount;
+            }
         }
 
         return $res;
