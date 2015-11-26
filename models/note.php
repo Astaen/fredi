@@ -29,6 +29,8 @@ class Note
             $this->$key = $value;
         }
 
+        $this->fees = getNoteFees();
+        
         return $this;
     }
 
@@ -45,15 +47,24 @@ class Note
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
-        return $res->fetchAll();
+        $res = $res->fetchAll();
+
+        //get note fees
+        foreach ($res as $el) {
+            $el->fees = $this->getNoteFees($el->id_note);
+        }
+
+        return $res;
 
     }
 
-    public function getNoteFees() {
-      $fee = new Fee();
-      $fees = $fee->fetchAll($this->id_note);
-      $this->fees = $fees;
-      return $this;
+    public function getNoteFees($id = null) {
+        if(is_null($id)) {
+            $id = $this->id_note;
+        }
+        $fee = new Fee();
+        $fees = $fee->fetchAll($id);
+        return $fees;
     }
 
     public function save() {

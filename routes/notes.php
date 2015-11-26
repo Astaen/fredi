@@ -13,7 +13,9 @@ $app->get('/note/:action(/:id)', function ($action, $id = null) use($app) {
 });
 
 $app->get('/notes', function() use($app) {
-	//gestion des notes
+	$note = new Note();
+	$notes = $note->fetchAll(2);
+	var_dump($notes);
 });
 
 ?>
