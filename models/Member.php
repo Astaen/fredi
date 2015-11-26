@@ -25,6 +25,7 @@ class Member {
     public function fetch($id) {
 
         $query = "SELECT * FROM club_member WHERE licence_num = ".$id;
+        var_dump($query);
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $req = $bdd->query($query);

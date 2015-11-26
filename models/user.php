@@ -2,9 +2,9 @@
 
 class User {
 
-	private $id_user;
-	private $id_type;
-	private $id_league;
+	public $id_user;
+	public $id_type;
+	public $id_league;
 	public $licence_num;
 	public $f_name;
 	public $l_name;
@@ -25,7 +25,11 @@ class User {
         }
     }
 
-    public function fetch($id) {
+    public function fetch($id = null) {
+
+        if(is_null($id)) {
+            $id = $this->id_user;
+        }
 
         $query = "SELECT * FROM user WHERE id_user = ".$id;
         $bdd = new BDD();
@@ -42,8 +46,9 @@ class User {
     }
 
     public function exists($email, $password) {
-    	if($this->fetchAll(null, $email, hash("sha256", $password)) ) {
-    		return true;
+        $user = $this->fetchAll(null, $email, hash("sha256", $password))[0];
+    	if($user) {
+    		return $user->id_user;
     	} else {
     		return false;
     	}
@@ -56,13 +61,13 @@ class User {
           $query .= " AND ID_TYPE = " . $id_type;
         }
         if(!is_null($email)) {
-          $query .= " AND MAIL = " . $email;
+          $query .= " AND MAIL = '$email'";
         }
         if(!is_null($password)) {
-          $query .= " AND PASSWORD = " . $password;
+          $query .= " AND PASSWORD = '$password'";;
         }                
 
-        var_dump($query);
+        // var_dump($query);
 
         $bdd = new BDD();
         $bdd = $bdd->connect();

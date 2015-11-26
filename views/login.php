@@ -1,5 +1,13 @@
 <h2>Connexion</h2>
 
+<?php if(isset($err)) { ?>
+<div class="row">
+    <div class="card-panel red">
+      <span class="white-text"><?= $err; ?></span>
+    </div>
+</div>
+<?php } ?>
+
 <div class="row">
 	<form action="/login" method="post">
 

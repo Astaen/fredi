@@ -5,8 +5,8 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="public/css/style.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/public/css/style.css"  media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,7 +18,7 @@
 	  <li><a href="#!">A propos</a></li>
 	  <li><a href="#!">Aide</a></li>
 	  <li class="divider"></li>
-	  <li><a href="#!">Déconnexion</a></li>
+	  <li><a href="/logout">Déconnexion</a></li>
 	</ul>
 
 	  <nav>
