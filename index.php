@@ -20,6 +20,8 @@ require("models/Fee.php");
 //instanciation de slim
 $app = new \Slim\Slim();
 
+$app->setName('FREDI');
+
 $app->config(array(
 	'templates.path' => './views'
 ));

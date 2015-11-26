@@ -15,3 +15,7 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([re
 .input-field .prefix.active {
 	color: inherit;
 }
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}

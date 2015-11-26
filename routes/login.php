@@ -20,6 +20,7 @@ $app->post('/login', function() use($app) {
 		$member->fetch($user->licence_num);
 
 		$_SESSION['logged'] = true;
+		$app->logged = true;
 		$_SESSION['userinfo'] = $member;
 
 		$app->redirect('/');
@@ -32,7 +33,7 @@ $app->post('/login', function() use($app) {
 $app->get('/logout', function() use($app) {
 	session_destroy();
 	$err = "Utilisateur déconnecté.";
-	$app->render('login.php', Array('err' => $err));	
+	$app->redirect('/login');
 });
 
 ?>
