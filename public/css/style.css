@@ -19,3 +19,11 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([re
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
 }
+
+.chip.validated {
+    background: #8DE08D;
+}
+
+.chip.closed {
+    background: #E68D8D;
+}

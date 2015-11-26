@@ -31,6 +31,7 @@ class Note
 
         $this->fees = getNoteFees();
         
+        $this->total = 0;
         foreach ($this->fees as $fee) {
             $this->total += $fee->amount;
         }
@@ -56,6 +57,7 @@ class Note
         //get note fees
         foreach ($res as $el) {
             $el->fees = $this->getNoteFees($el->id_note);
+            $el->total = 0;
             foreach ($el->fees as $fee) {
                 $el->total += $fee->amount;
             }
