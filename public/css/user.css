@@ -1,0 +1,10 @@
+.total_amount_current_year {
+  text-align: center;
+  color: white;
+}
+.current_year th {
+  text-align: center;
+}
+.type_current_year, .added_current_year, .caption_current_year, .amount_current_year {
+  color: white;
+}
