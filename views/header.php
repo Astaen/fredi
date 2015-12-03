@@ -3,7 +3,7 @@
   <head>
   	<meta charset="utf-8">
     <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/public/css/material-icons.css" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="/public/css/style.css"  media="screen,projection"/>
@@ -14,7 +14,7 @@
 
   <body>
 
-	
+
 	<ul id="dropdown1" class="dropdown-content">
 	  <li><a href="#!">A propos</a></li>
 	  <li><a href="#!">Aide</a></li>
@@ -35,6 +35,6 @@
 			<?php endif; ?>
 	    </div>
 	  </nav>
-	 
+
 
   	<div class="container">

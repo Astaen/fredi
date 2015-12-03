@@ -9,8 +9,8 @@
 
 <div class="row">
   <div class="col s12 teal">
-      <h4 class="total_amount_current_year">Frais de cette année</h4>
-      <h4 class="total_amount_current_year"><?= $notes[0]->total; ?> €</h4>
+      <h4 class="total_amount_current_year white-text"><center>Frais de cette année</center></h4>
+      <h4 class="total_amount_current_year white-text"><center><?= $notes[0]->total; ?> €</center></h4>
   </div>
   <ul class="collapsible" data-collapsible="accordion">
     <?php foreach($notes as $note): ?>

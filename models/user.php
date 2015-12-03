@@ -21,7 +21,7 @@ class User {
                 if(property_exists("User", $key)) {
                     $this->$key = $value;
                 }
-            }           
+            }
         }
     }
 
@@ -46,9 +46,9 @@ class User {
     }
 
     public function exists($email, $password) {
-        $user = $this->fetchAll(null, $email, hash("sha256", $password))[0];
+        $user = $this->fetchAll(null, $email, hash("sha256", $password));
     	if($user) {
-    		return $user->id_user;
+    		return $user[0]->id_user;
     	} else {
     		return false;
     	}
@@ -65,7 +65,7 @@ class User {
         }
         if(!is_null($password)) {
           $query .= " AND PASSWORD = '$password'";;
-        }                
+        }
 
         // var_dump($query);
 
