@@ -10,6 +10,7 @@ class Fee
   private $date_fee;
   private $caption;
   private $amount;
+  private $validated;
 
   function __construct($args = null) {
     if($args) {
@@ -31,7 +32,13 @@ class Fee
       $bdd = new BDD();
       $bdd = $bdd->connect();
       $res = $bdd->query($query);
-      return $res->fetchAll();
+      $res = $res->fetchAll();
+
+      foreach ($res as $key => $fee) {
+        	$fee->creation_date = date('d/m/Y', strtotime($fee->creation_date));
+      }
+
+      return $res;
       
   }
 

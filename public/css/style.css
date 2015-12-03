@@ -27,3 +27,15 @@ input:-webkit-autofill {
 .chip.closed {
     background: #E68D8D;
 }
+
+.container {
+    margin-top: 1em;
+}
+
+.fixed-action-btn.absolute {
+    position: absolute;
+}
+
+span.f_name {
+    text-transform: capitalize;
+}
