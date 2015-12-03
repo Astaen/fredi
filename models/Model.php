@@ -13,7 +13,11 @@ class Note extends Model
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
-        return $res->fetch();
+        $res = $res->fetch();
+
+        $member = new Member();
+        $this->details = $member->fetch($res->licence_num);
+        return 
 
     }
 

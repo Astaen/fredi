@@ -13,27 +13,27 @@
 </div>
 
 <table class="highlight">
-    <thead>
-      <tr>
-          <th data-field="year">Année</th>
-          <th data-field="state">Etat</th>
-          <th data-field="amount">Total</th>
-          <th data-field="action">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-    	<?php foreach ($notes as $key => $note): ?>
-    		<tr>
-        			<td><?= date("Y", strtotime($note->year)); ?></td>
-        			<td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
-        			<td><?= $note->total . " €"; ?></td>
-        			<td>
-        				<a href="/note/<?= $note->id_note; ?>" class="waves-effect waves-light btn blue"><i class="material-icons left">pageview</i>Afficher</a>
-<!--         				<?php if($note->id_note_state == 'open') { ?>
-        					<a href="/note/<?= $note->id_note; ?>/edit" class="waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
-        				<?php } ?> -->
-        			</td>
-    		</tr>
-    	<?php endforeach; ?>
-    </tbody>		
-</table>
+   <thead>
+     <tr>
+         <th data-field="id_note"><i class="material-icons">description</i></th>
+         <th data-field="year">Année</th>
+         <th data-field="amount">Montant total</th>
+         <th data-field="id_note_state">État</th>
+     </tr>
+   </thead>
+   <tbody>
+     <?php foreach ($notes as $note):?>
+       <?php $total_amount = 0; ?>
+       <?php foreach ($note->fees as $amount){
+         $total_amount += $amount->amount;
+       } ?>
+       <tr>
+         <td><?= $note->id_note; ?></td>
+         <td><?= $note->year; ?></td>
+         <td><?= $total_amount; ?> €</td>
+         <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
+         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a></td>
+       </tr>
+     <?php endforeach; ?>
+   </tbody>
+ </table>

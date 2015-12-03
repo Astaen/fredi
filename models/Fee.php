@@ -11,6 +11,7 @@ class Fee
   private $caption;
   private $amount;
   private $validated;
+  private $coef;
 
   function __construct($args = null) {
     if($args) {
@@ -24,7 +25,7 @@ class Fee
 
   public function fetchAll($id_note = null) {
 
-      $query = "SELECT * FROM fee WHERE 1";
+      $query = "SELECT id_fee, id_note, fee.id_fee_type, creation_date, fee.caption, amount, validated, coef FROM fee, fee_type WHERE fee_type.id_fee_type = fee.id_fee_type ";
       if(!is_null($id_note)) {
         $query .= " AND ID_NOTE = " . $id_note;
       }

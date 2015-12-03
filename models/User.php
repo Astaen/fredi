@@ -34,6 +34,9 @@ class User {
 			$this->$key = $value;
 		}
 
+        $member = new Member();
+        $this->details = $member->fetch($res->licence_num);        
+
 		return $this;
 
     }

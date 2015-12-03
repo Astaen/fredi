@@ -12,7 +12,17 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 				break;
 
 			case 'pdf':
+				$note = new Note();
+				$note = $note->fetch($id);
+				$fees = $note->fees;
+				$user = new User();
+				$user = $user->fetch($note->id_user);
+				$member = $user->details;
+				// var_dump($note);
+				// var_dump($user);
 				include('./class/PDF.php');
+				var_dump($link);
+				$app->redirect($link);
 				break;				
 
 			default:
