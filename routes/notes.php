@@ -1,7 +1,6 @@
 <?php
 
 $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
-
 	if(isset($action)) {
 		switch ($action) {
 			case 'edit':
