@@ -17,7 +17,7 @@
                 <li><a class="btn-floating green tooltipped" alt="Télécharger la fiche" data-position="top" data-delay="50" data-tooltip="Télécharger la fiche"><i class="material-icons">file_download</i></a></li>
             </ul>
         </div>    
-        <p class="flow-text">Total : <?= $note->total . " €"; ?></p>
+        <p class="flow-text"><?= $note->total . " €"; ?></p>
     </div>
 </div>
 

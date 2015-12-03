@@ -10,7 +10,7 @@
 <div class="card">
     <div class="card-image">
         <img src="/public/img/bg3.jpg">
-        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($member['f_name']) . "</span> " . $member['l_name']; ?></span>
+        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($member->f_name) . "</span> " . $member->l_name; ?></span>
     </div>
     <div class="card-content blue-text">
         <p class="flow-text">Vos dépenses cette année : <?= $notes[0]->total; ?> €</p>
@@ -52,8 +52,8 @@
          <td><?= $note->id_note; ?></td>
          <td><?= $note->year; ?></td>
          <td><?= $total_amount; ?> €</td>
-         <td><button class="btn blue lighten-2"><?= $note->id_note_state; ?></button></td>
-         <td><a class="waves-effect waves-light btn lighten-1" href="/note/<?= $note->id_note; ?>">Voir la fiche</a></td>
+         <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
+         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>">Voir la fiche</a></td>
        </tr>
      <?php endforeach; ?>
    </tbody>

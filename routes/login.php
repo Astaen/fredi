@@ -21,7 +21,7 @@ $app->post('/login', function() use($app) {
 
 		$_SESSION['logged'] = true;
 		$app->logged = true;
-		$_SESSION['userinfo'] = get_object_vars($member);
+		$_SESSION['userinfo'] = $member;
 
 		$app->redirect('/');
 	} else {
