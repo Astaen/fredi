@@ -2,9 +2,9 @@
 
 class Note
 {
-    private $id_note = null;
-    private $id_note_state = null;
-    private $id_user = null;
+    public $id_note = null;
+    public $id_note_state = null;
+    public $id_user = null;
     public $year = null;
 
     public function __construct($args = null) {
@@ -29,12 +29,14 @@ class Note
             $this->$key = $value;
         }
 
-        $this->fees = getNoteFees();
-        
+        //get note fees
+        $this->fees = $this->getNoteFees($this->id_note);
         $this->total = 0;
         foreach ($this->fees as $fee) {
             $this->total += $fee->amount;
         }
+
+        $this->year = date("Y", strtotime($this->year));
 
         return $this;
     }

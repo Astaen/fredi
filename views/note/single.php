@@ -1,7 +1,7 @@
 <?php
-// var_dump($notes);
+var_dump($note);
 ?>
-<h2>Gestion des frais</h2>
+<h2>Fiche #<?= $note->id_note; ?> - Année <?= $note->year; ?></h2>
 <table class="highlight">
     <thead>
       <tr>
@@ -12,9 +12,9 @@
       </tr>
     </thead>
     <tbody>
-    	<?php foreach ($notes as $key => $note): ?>
+
     		<tr>
-        			<td><?= date("Y", strtotime($note->year)); ?></td>
+        			<td><?= $note->year; ?></td>
         			<td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
         			<td><?= $note->total . " €"; ?></td>
         			<td>
@@ -24,6 +24,6 @@
         				<?php } ?>
         			</td>
     		</tr>
-    	<?php endforeach; ?>
+
     </tbody>		
 </table>

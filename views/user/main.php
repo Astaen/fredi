@@ -1,8 +1,31 @@
 <?php
+<<<<<<< HEAD
+// var_dump($notes);
+// var_dump($member);
+=======
 //var_dump($notes);
 //var_dump($member);
+>>>>>>> 6e1b49a19f8aebf76d2d1ee48fb7c500c04237a8
 ?>
 
+<<<<<<< HEAD
+       <tbody>
+         <?php foreach ($notes as $note):?>
+           <?php $total_amount = 0; ?>
+           <?php foreach ($note->fees as $amount){
+             $total_amount += $amount->amount;
+           } ?>
+           <tr>
+             <td><?= $note->id_note; ?></td>
+             <td><?= $note->year; ?></td>
+             <td><?= $total_amount; ?> €</td>
+             <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
+             <td><a class="waves-effect waves-light btn lighten-1" href="/note/<?= $note->id_note; ?>">Voir la fiche</a></td>
+           </tr>
+         <?php endforeach; ?>
+       </tbody>
+     </table>
+=======
 <div class="row">
   <div class="col s12 teal">
       <h4 class="total_amount_current_year">Frais de cette année</h4>
@@ -51,3 +74,4 @@
      <?php endforeach; ?>
    </tbody>
  </table>
+>>>>>>> 6e1b49a19f8aebf76d2d1ee48fb7c500c04237a8

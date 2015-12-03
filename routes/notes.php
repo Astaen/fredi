@@ -1,15 +1,25 @@
 <?php
 
-$app->get('/note/:action(/:id)', function ($action, $id = null) use($app) {
+$app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 
-	switch ($action) {
-		case 'add':
-			# code...
-			break;
-		
-		default:
-			# code...
-			break;
+	if(isset($action)) {
+		switch ($action) {
+			case 'edit':
+				# code...
+				break;
+
+			case 'delete':
+				# code...
+				break;
+
+			default:
+				# code...
+				break;
+		}		
+	} else {
+		$note = new Note();
+		$note = $note->fetch($id);
+		$app->render('note/single.php', Array('note' => $note));		
 	}
 
 });
