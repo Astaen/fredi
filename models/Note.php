@@ -58,6 +58,7 @@ class Note
 
         //get note fees
         foreach ($res as $el) {
+            $el->year = date("Y", strtotime($el->year));
             $el->fees = $this->getNoteFees($el->id_note);
             $el->total = 0;
             foreach ($el->fees as $fee) {

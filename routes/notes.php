@@ -11,6 +11,10 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 				# code...
 				break;
 
+			case 'pdf':
+				include('./class/PDF.php');
+				break;				
+
 			default:
 				# code...
 				break;

@@ -1,3 +1,15 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 0!important;
+    margin: 0;
+}
+
+footer {
+    flex: 1 0 auto;
+}     
+
 div.nav-wrapper {
     padding: 0 15px;
 }
@@ -43,4 +55,8 @@ span.f_name {
 #dashboard-fees {
     box-shadow: none;
     border: none;
+}
+
+table .btn {
+    float: right;
 }

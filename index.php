@@ -3,7 +3,7 @@ ini_set('xdebug.var_display_max_depth', 5);
 ini_set('xdebug.var_display_max_children', 999);
 ini_set('xdebug.var_display_max_data', 9999);
 
-require './vendor/fpdf/fpdf.php';
+// require './vendor/fpdf/fpdf.php';
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
