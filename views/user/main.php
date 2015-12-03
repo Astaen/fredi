@@ -7,21 +7,24 @@
 
 ?>
 
-<div class="row">
-  <div class="col s12 teal">
-      <h4 class="total_amount_current_year white-text"><center>Frais de cette année</center></h4>
-      <h4 class="total_amount_current_year white-text"><center><?= $notes[0]->total; ?> €</center></h4>
-  </div>
-  <ul class="collapsible" data-collapsible="accordion">
-    <?php foreach($notes as $note): ?>
-      <?php foreach($note->fees as $fee): ?>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">trending_flat</i><?= $fee->caption; ?></div>
-        <div class="collapsible-body"><p>Montant de <b><?= $fee->amount; ?></b> € ajouté le <?= $fee->creation_date; ?></p></div>
-      </li>
+<div class="card">
+    <div class="card-image">
+        <img src="/public/img/bg3.jpg">
+        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($member['f_name']) . "</span> " . $member['l_name']; ?></span>
+    </div>
+    <div class="card-content blue-text">
+        <p class="flow-text">Vos dépenses cette année : <?= $notes[0]->total; ?> €</p>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion">
+      <?php foreach($notes as $note): ?>
+        <?php foreach($note->fees as $fee): ?>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">trending_flat</i><?= $fee->caption; ?></div>
+          <div class="collapsible-body"><p>Montant de <b><?= $fee->amount; ?></b> € ajouté le <?= $fee->creation_date; ?></p></div>
+        </li>
+        <?php endforeach; ?>
       <?php endforeach; ?>
-    <?php endforeach; ?>
-  </ul>
+    </ul>
 </div>
 
 <div class="row">
