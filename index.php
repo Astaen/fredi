@@ -29,17 +29,6 @@ $app->config(array(
 	'templates.path' => './views'
 ));
 
-$app->hook('slim.before.dispatch', function() use ($app) { 
-   $public = array('login');
-
-	if(!in_array('login', (array)$app->router()->getCurrentRoute())) {
-		if(!isset($_SESSION['logged'])) {
-			// var_dump($app->router()->getCurrentRoute());
-			$app->redirect('/login');
-		}
-	}
-});
-
 $app->get('/', function() use($app) {
 	if(isset($_SESSION['logged'])) {
 		$note = new Note();
