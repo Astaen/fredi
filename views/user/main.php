@@ -44,14 +44,10 @@
    </thead>
    <tbody>
      <?php foreach ($notes as $note):?>
-       <?php $total_amount = 0; ?>
-       <?php foreach ($note->fees as $amount){
-         $total_amount += $amount->amount;
-       } ?>
        <tr>
          <td><?= $note->id_note; ?></td>
          <td><?= $note->year; ?></td>
-         <td><?= $total_amount; ?> €</td>
+         <td><?= $note->total; ?> €</td>
          <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
          <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a></td>
        </tr>

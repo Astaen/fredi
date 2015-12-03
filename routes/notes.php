@@ -20,7 +20,7 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 				$member = $user->details;
 				// var_dump($note);
 				// var_dump($user);
-				include('./class/PDF.php');
+				include('class/PDF.php');
 				var_dump($link);
 				$app->redirect($link);
 				break;				
