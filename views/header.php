@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<title><?= $title; ?></title>
   	<meta charset="utf-8">
     <!--Import Google Icon Font-->
     <link href="/public/css/material-icons.css" rel="stylesheet">

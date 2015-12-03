@@ -12,6 +12,7 @@ require("class/bdd.php");
 require("class/fredi.php");
 
 //importation des modèles
+require("models/Club.php");
 require("models/User.php");
 require("models/Member.php");
 require("models/Note.php");
@@ -56,7 +57,7 @@ $app->get('/', function() use($app) {
 require 'routes/login.php';
 require 'routes/notes.php';
 
-$app->render('header.php');
+$app->render('header.php', Array('title' => $app->getName()));
 $app->run();
 $app->render('footer.php');
 ?>

@@ -8,15 +8,7 @@
     </div>
     <div class="card-content blue-text">
         <div class="absolute fixed-action-btn right horizontal click-to-toggle" style="bottom: 55px; right: 24px;">
-            <a class="btn-floating btn-large red">
-                <i class="large mdi-navigation-menu"></i>
-            </a>
-            <ul>
-                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-            </ul>
+            <a class="btn-floating btn-large red tooltipped" alt="Ajouter un bordereau" data-position="top" data-delay="50" data-tooltip="Ajouter un bordereau"><i class="large material-icons">add</i></a>
         </div>    
         <p class="flow-text">Adhérent : <span class="f_name"><?= strtolower($user['f_name']); ?> </span><?= strtoupper($user['l_name']); ?></p>
     </div>
