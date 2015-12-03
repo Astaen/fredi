@@ -1,16 +1,7 @@
-<?php
-
-// var_dump($notes);
-// var_dump($member);
-//var_dump($notes);
-//var_dump($member);
-
-?>
-
 <div class="card">
     <div class="card-image">
         <img src="/public/img/bg3.jpg">
-        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($member->f_name) . "</span> " . $member->l_name; ?></span>
+        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($user->details->f_name) . "</span> " . $user->details->l_name; ?></span>
     </div>
     <div class="card-content blue-text">
         <p class="flow-text">Vos dépenses cette année : <?= $notes[0]->total; ?> €</p>

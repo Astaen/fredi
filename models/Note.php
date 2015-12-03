@@ -33,7 +33,7 @@ class Note
         $this->fees = $this->getNoteFees($this->id_note);
         $this->total = 0;
         foreach ($this->fees as $fee) {
-            $this->total += $fee->amount*$fee->coef;
+            $this->total += $fee->amount;
         }
 
         $this->year = date("Y", strtotime($this->year));
@@ -62,7 +62,7 @@ class Note
             $el->fees = $this->getNoteFees($el->id_note);
             $el->total = 0;
             foreach ($el->fees as $fee) {
-                $el->total += $fee->amount*$fee->coef;
+                $el->total += $fee->amount;
             }
         }
 

@@ -36,7 +36,8 @@ class Fee
       $res = $res->fetchAll();
 
       foreach ($res as $key => $fee) {
-        	$fee->creation_date = date('d/m/Y', strtotime($fee->creation_date));
+          $fee->creation_date = date('d/m/Y', strtotime($fee->creation_date));
+        	$fee->amount = $fee->amount*$fee->coef;
       }
 
       return $res;

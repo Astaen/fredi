@@ -20,7 +20,6 @@ require("models/Fee.php");
 
 session_start();
 
-//instanciation de slim
 $app = new \Slim\Slim();
 
 $app->setName('FREDI');
@@ -32,19 +31,14 @@ $app->config(array(
 $app->get('/', function() use($app) {
 	if(isset($_SESSION['logged'])) {
 		$note = new Note();
-		$notes = $note->fetchAll(2);
-		$fee = new Fee();
-		foreach ($notes as $key => $note) {
-			$fees = $fee->fetchAll($note->id_note);
-			$note->fees = $fees;
-		}
-		$app->render('user/main.php', array('notes' => $notes, 'member' => $_SESSION['userinfo']));
+		$notes = $note->fetchAll($_SESSION['userinfo']->id_user);
+		$app->render('user/main.php', array('notes' => $notes, 'user' => $_SESSION['userinfo']));
 	} else {
 		$app->redirect('/login');
 	}
 });
 
-/* CUSTOM ROUTES */
+//Custom routes
 require 'routes/login.php';
 require 'routes/notes.php';
 

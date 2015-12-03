@@ -15,13 +15,10 @@ $app->post('/login', function() use($app) {
 	$user->id_user = $user->exists($post['email'], $post['password']);
 	if($user->id_user) {
 		//On récupère les infos de l'utilisateurs
-		$user->fetch();
-		//On récupère les infos du membre correspondant
-		$member = $member->fetch($user->licence_num);
+		$user = $user->fetch();
 
 		$_SESSION['logged'] = true;
-		$app->logged = true;
-		$_SESSION['userinfo'] = $member;
+		$_SESSION['userinfo'] = $user;
 
 		$app->redirect('/');
 	} else {

@@ -1,7 +1,3 @@
-<?php
-    $user = $_SESSION['userinfo'];
-    // var_dump($user);
-?>
 <div class="card">
     <div class="card-image">
         <img src="/public/img/bg2.jpg">

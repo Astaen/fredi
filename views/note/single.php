@@ -1,7 +1,3 @@
-<?php
- //var_dump($note);
-?>
-
 <div class="card">
     <div class="card-image">
         <img src="/public/img/bg1.jpg">
