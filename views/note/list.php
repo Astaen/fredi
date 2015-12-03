@@ -8,7 +8,7 @@
         <span class="card-title">Liste des bordereaux</span>
     </div>
     <div class="card-content blue-text">
-        <p class="flow-text">Adhérent : <span class="f_name"><?= strtolower($user->f_name); ?> </span><?= strtoupper($user->l_name); ?></p>
+        <p class="flow-text"><?= $user->club->name; ?></p>
     </div>
 </div>
 
