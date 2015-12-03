@@ -24,7 +24,7 @@
 	</ul>
 
 	  <nav>
-	    <div class="nav-wrapper blue darken-2">
+	    <div class="nav-wrapper blue darken-1">
 	    	<a href="#" class="brand-logo">Fredi</a>
 	    	<?php if(isset($_SESSION['logged'])): ?>
 			<ul class="right hide-on-med-and-down">
@@ -38,4 +38,4 @@
 	  </nav>
 
 
-  	<div class="container">
+  	<div class="container" id="main">

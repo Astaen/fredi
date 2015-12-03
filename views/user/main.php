@@ -15,7 +15,7 @@
     <div class="card-content blue-text">
         <p class="flow-text">Vos dépenses cette année : <?= $notes[0]->total; ?> €</p>
     </div>
-    <ul class="collapsible" data-collapsible="accordion">
+    <ul class="collapsible" data-collapsible="accordion" id="dashboard-fees">
       <?php foreach($notes as $note): ?>
         <?php foreach($note->fees as $fee): ?>
         <li>
@@ -53,7 +53,7 @@
          <td><?= $note->year; ?></td>
          <td><?= $total_amount; ?> €</td>
          <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
-         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>">Voir la fiche</a></td>
+         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a></td>
        </tr>
      <?php endforeach; ?>
    </tbody>

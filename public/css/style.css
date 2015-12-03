@@ -28,8 +28,8 @@ input:-webkit-autofill {
     background: #E68D8D;
 }
 
-.container {
-    margin-top: 1em;
+#main {
+    padding: 2em 0;
 }
 
 .fixed-action-btn.absolute {
@@ -38,4 +38,9 @@ input:-webkit-autofill {
 
 span.f_name {
     text-transform: capitalize;
+}
+
+#dashboard-fees {
+    box-shadow: none;
+    border: none;
 }
