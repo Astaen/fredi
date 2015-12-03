@@ -7,3 +7,5 @@ Réalisé dans son intégralité par Keyvan ESTERMANN et Sofiane HAMADI. Classe 
 
 Aux étudiants de BTS SIO : n'hésitez pas à utiliser ce projet comme source d'inspiration, mais nous vous déconseillons de le récupérer
 dans son intégralité pour le présenter à l'oral, car il sera certainement connu du jury.
+
+Demo live : http://fredi.astaen.fr/
