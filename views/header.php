@@ -16,8 +16,8 @@
 
 	
 	<ul id="dropdown1" class="dropdown-content">
-	  <li><a href="#!">A propos</a></li>
-	  <li><a href="#!">Aide</a></li>
+	  <li><a href="/about">A propos</a></li>
+	  <li><a href="/help">Aide</a></li>
 	  <li class="divider"></li>
 	  <li><a href="/logout">Déconnexion</a></li>
 	</ul>
@@ -27,8 +27,8 @@
 	    	<a href="#" class="brand-logo">Fredi</a>
 	    	<?php if(isset($_SESSION['logged'])): ?>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Gestion des frais</a></li>
+				<li><a href="/">Accueil</a></li>
+				<li><a href="/notes">Gestion des frais</a></li>
 				<!-- Dropdown Trigger -->
 				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Autres<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>

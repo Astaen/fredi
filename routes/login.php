@@ -17,11 +17,11 @@ $app->post('/login', function() use($app) {
 		//On récupère les infos de l'utilisateurs
 		$user->fetch();
 		//On récupère les infos du membre correspondant
-		$member->fetch($user->licence_num);
+		$member = $member->fetch($user->licence_num);
 
 		$_SESSION['logged'] = true;
 		$app->logged = true;
-		$_SESSION['userinfo'] = $member;
+		$_SESSION['userinfo'] = get_object_vars($member);
 
 		$app->redirect('/');
 	} else {

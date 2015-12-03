@@ -4,16 +4,9 @@ class User {
 
 	public $id_user;
 	public $id_type;
-	public $id_league;
 	public $licence_num;
-	public $f_name;
-	public $l_name;
-	public $birthdate;
 	public $mail;
 	private $password;
-	public $adress;
-	public $postal_code;
-	public $city;
 
     public function __construct($args = null) {
         if($args) {
