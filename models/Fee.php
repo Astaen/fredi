@@ -41,7 +41,7 @@ class Fee
       }
 
       return $res;
-      
+
   }
 
   public function save() {

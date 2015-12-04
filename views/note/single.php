@@ -44,28 +44,32 @@
   <div id="add_fee" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Ajouter un nouveau frais</h4>
-      <form class="row" action="/note/<?= $note->id_note; ?>/add_fee" method="post">
-        <div class="input-field col s12">
-          <input placeholder="Burger King" id="caption" type="text" class="validate">
-          <label for="caption">Libelle</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Montant en euro" id="amount" type="number" step="0.01" class="validate">
-          <label for="amount">Montant</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="creation_date" type="date" class="datepicker picker__input">
-        </div>
-      </form>
+      <div class="row">
+        <form action="/note/<?= $note->id_note; ?>/add_fee" method="post">
+          <div class="input-field col s12">
+            <input placeholder="Ex: Burger King" id="caption" type="text" class="validate">
+            <label for="caption">Libelle</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Montant en euro" id="amount" type="number" step="0.01" class="validate">
+            <label for="amount">Montant</label>
+          </div>
+          <div class="input-field col s6">
+              <input id="creation_date" type="date" class="datepicker picker__input" placeholder="Cliquer içi pour sélectionner une date">
+              <label for="creation_date">Date de la dépense</label>
+          </div>
+          <div class="input-field col s12">
+            <select class="browser-default">
+            <option value="" disabled selected>Type de frais</option>
+            <option value="km">Kilomètre</option>
+            <option value="default">Autre</option>
+            </select>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Envoyer</a>
       <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Annuler</a>
     </div>
   </div>
-<script type="text/javascript">
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-</script>
