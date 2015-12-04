@@ -4,7 +4,7 @@
         <span class="card-title">Liste des bordereaux</span>
     </div>
     <div class="card-content blue-text">
-        <p class="flow-text"><?= $user->club->name; ?></p>
+        <p class="flow-text"><?= $user->details->club->name; ?></p>
     </div>
 </div>
 

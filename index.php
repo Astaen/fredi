@@ -41,6 +41,7 @@ $app->get('/', function() use($app) {
 //Custom routes
 require 'routes/login.php';
 require 'routes/notes.php';
+require 'routes/misc.php';
 
 $app->render('header.php', Array('title' => $app->getName()));
 $app->run();

@@ -10,9 +10,9 @@
 			  <div class="col l4 offset-l2 s12">
 			    <h5 class="white-text">Liens</h5>
 			    <ul>
-			      <li><a class="grey-text text-lighten-3" href="#!">Code source</a></li>
-			      <li><a class="grey-text text-lighten-3" href="#!">Documentation</a></li>
-			      <li><a class="grey-text text-lighten-3" href="#!">A propos</a></li>
+			      <li><a class="grey-text text-lighten-3" target="_blank" href="https://github.com/Astaen/fredi">Code source</a></li>
+			      <li><a class="grey-text text-lighten-3" target="_blank" href="#!">Documentation</a></li>
+			      <li><a class="grey-text text-lighten-3" href="/about">A propos</a></li>
 			    </ul>
 			  </div>
 			</div>

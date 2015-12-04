@@ -18,10 +18,7 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 				$user = new User();
 				$user = $user->fetch($note->id_user);
 				$member = $user->details;
-				// var_dump($note);
-				// var_dump($user);
 				include('class/PDF.php');
-				var_dump($link);
 				$app->redirect($link);
 				break;				
 
@@ -40,7 +37,7 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 $app->get('/notes', function() use($app) {
 	$note = new Note();
 	$notes = $note->fetchAll(2);
-	$app->render('note/list.php', Array('notes' => $notes));
+	$app->render('note/list.php', Array('notes' => $notes, 'user' => $_SESSION['userinfo']));
 });
 
 ?>
