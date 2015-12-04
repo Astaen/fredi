@@ -47,23 +47,23 @@
       <div class="row">
         <form action="/note/<?= $note->id_note; ?>/add_fee" method="post">
           <div class="input-field col s12">
-            <input placeholder="Ex: Burger King" id="caption" type="text" class="validate">
+            <input placeholder="Ex: Achat de matériel" id="caption" type="text" class="validate">
             <label for="caption">Libelle</label>
           </div>
+          <div class="input-field col s12">
+            <select id="fee_date">
+              <option value="km" selected>Déplacement</option>
+              <option value="default">Autre</option>
+            </select>
+            <label>Type de frais</label>
+          </div>          
           <div class="input-field col s6">
-            <input placeholder="Montant en euro" id="amount" type="number" step="0.01" class="validate">
+            <input placeholder="Distance en km" id="amount" type="number" step="0.01" class="validate">
             <label for="amount">Montant</label>
           </div>
           <div class="input-field col s6">
               <input id="creation_date" type="date" class="datepicker picker__input" placeholder="Cliquer içi pour sélectionner une date">
               <label for="creation_date">Date de la dépense</label>
-          </div>
-          <div class="input-field col s12">
-            <select class="browser-default">
-            <option value="" disabled selected>Type de frais</option>
-            <option value="km">Kilomètre</option>
-            <option value="default">Autre</option>
-            </select>
           </div>
         </form>
       </div>
