@@ -10,7 +10,7 @@
             </a>
             <ul>
                 <li><a class="btn-floating blue tooltipped modal-trigger" onclick="$('#add_fee').openModal();" alt="Ajouter un frais" data-position="top" data-delay="50" data-tooltip="Ajouter un frais"><i class="material-icons">add</i></a></li>
-                <li><a class="btn-floating green tooltipped" alt="Télécharger la fiche" data-position="top" data-delay="50" data-tooltip="Télécharger la fiche" href="/note/<?= $note->id_note; ?>/pdf"><i class="material-icons">file_download</i></a></li>
+                <li><a class="btn-floating green tooltipped" alt="Télécharger la fiche" data-position="top" data-delay="50" data-tooltip="Télécharger la fiche" target="_blank" href="/note/<?= $note->id_note; ?>/pdf"><i class="material-icons">file_download</i></a></li>
             </ul>
         </div>
         <p class="flow-text"><?= $note->total . " €"; ?></p>

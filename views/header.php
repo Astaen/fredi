@@ -25,15 +25,19 @@
 
 	  <nav>
 	    <div class="nav-wrapper blue darken-1">
-	    	<a href="#" class="brand-logo">Fredi</a>
-	    	<?php if(isset($_SESSION['logged'])): ?>
+	    	<a href="/" class="brand-logo">Fredi</a>
+	    	<?php if(isset($_SESSION['logged'])) { ?>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="/">Accueil</a></li>
 				<li><a href="/notes">Gestion des frais</a></li>
 				<!-- Dropdown Trigger -->
 				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Autres<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
-			<?php endif; ?>
+			<?php } else { ?>
+			<ul class="right">
+				<li><a href="/">Connexion</a></li>
+			</ul>
+			<?php } ?>
 	    </div>
 	  </nav>
 

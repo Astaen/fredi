@@ -25,7 +25,7 @@ $app->post('/login', function() use($app) {
 		$err = "Email ou mot de passe incorrect.";
 		$app->render('login.php', Array('err' => $err));
 	}
-});
+})->name('login');
 
 $app->get('/logout', function() use($app) {
 	session_destroy();

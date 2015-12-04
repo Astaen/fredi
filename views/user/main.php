@@ -1,21 +1,21 @@
 <div class="card">
     <div class="card-image">
         <img src="/public/img/bg3.jpg">
-        <span class="card-title">Tableau de bord de <span class="f_name"><?= strtolower($user->details->f_name) . "</span> " . $user->details->l_name; ?></span>
+        <span class="card-title">Bienvenue, <span class="f_name"><?= strtolower($user->details->f_name) . "</span> " . $user->details->l_name; ?></span>
     </div>
     <div class="card-content blue-text">
-        <p class="flow-text">Vos dépenses cette année : <?= $notes[0]->total; ?> €</p>
+        <p class="flow-text">Votre solde au <?= date('d/m/Y'). " : " . $notes[0]->total; ?> €</p>
     </div>
-    <ul class="collapsible" data-collapsible="accordion" id="dashboard-fees">
+
+    <ul class="collection with-header">
+      <li class="collection-header"><h4>Détails</h4></li>
       <?php foreach($notes as $note): ?>
-        <?php foreach($note->fees as $fee): ?>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">trending_flat</i><?= $fee->caption; ?></div>
-          <div class="collapsible-body"><p>Montant de <b><?= $fee->amount; ?></b> € ajouté le <?= $fee->creation_date; ?></p></div>
-        </li>
+        <?php foreach($note->fees as $fee): ?>    
+          <li class="collection-item"><?= date('d/m/Y',strtotime($fee->creation_date)) . " - " . $fee->caption; ?><span class="secondary-content"><?= $fee->amount . " €"; ?></span></li>
         <?php endforeach; ?>
-      <?php endforeach; ?>
+      <?php endforeach; ?>      
     </ul>
+
 </div>
 
 <div class="row">

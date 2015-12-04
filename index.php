@@ -28,6 +28,16 @@ $app->config(array(
 	'templates.path' => './views'
 ));
 
+$app->hook('slim.before.dispatch', function () use($app) {
+	$accessible = Array('login', 'about');
+	if(!isset($_SESSION['logged'])) {
+		if(!in_array($app->router->getCurrentRoute()->getName(), $accessible)) {
+			$app->redirect('login');
+		}
+	}
+
+});
+
 $app->get('/', function() use($app) {
 	if(isset($_SESSION['logged'])) {
 		$note = new Note();

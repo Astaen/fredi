@@ -8,6 +8,7 @@ body {
 
 footer {
     flex: 1 0 auto;
+    position: relative;
 }     
 
 div.nav-wrapper {
@@ -61,3 +62,17 @@ table .btn {
     float: right;
 }
 
+.card .collection {
+    border: none;
+}
+
+footer .container {
+    margin-bottom: 70px;
+}
+
+.footer-copyright {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
