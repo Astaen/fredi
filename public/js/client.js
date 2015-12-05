@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 			// Formats
 			format: 'd mmmm yyyy',
-			formatSubmit: 'yyyy-mmmm-d',
+			formatSubmit: 'yyyy-mm-dd',
 			hiddenName: 'creation_date',
 
 	    selectMonths: true, // Creates a dropdown to control month
@@ -43,4 +43,3 @@ $(document).ready(function() {
 	  });
 
 });
-

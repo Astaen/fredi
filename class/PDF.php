@@ -1,5 +1,5 @@
-<?php 
-require('../vendor/fpdf/fpdf.php');
+<?php
+require('/vendor/fpdf.php');
 
 class PDF extends FPDF
 {
@@ -75,7 +75,7 @@ class PDF extends FPDF
         #region Données
         $this->SetFillColor(224,235,255);
         $this->SetTextColor(10,105,182);
-        $this->SetFont('');        
+        $this->SetFont('');
         $fill = false;
         foreach($data as $row)
         {
@@ -84,7 +84,7 @@ class PDF extends FPDF
                 $this->Cell($header[$index]['width'], $height, $cell, 1, 0, 'L', $fill);
             }
             $this->Ln();
-            $fill = !$fill;        
+            $fill = !$fill;
         }
         // Trait de terminaison
         // $this->Cell($width*count($data),0,'','T');
@@ -112,9 +112,9 @@ class PDF extends FPDF
 
     // Titres des colonnes
     $header = array(
-        Array('width' => '30', 'content' => 'Date'), 
-        Array('width' => '80', 'content' => 'Motif'), 
-        Array('width' => '50', 'content' => 'Type'), 
+        Array('width' => '30', 'content' => 'Date'),
+        Array('width' => '80', 'content' => 'Motif'),
+        Array('width' => '50', 'content' => 'Type'),
         Array('width' => '30', 'content' => 'Montant')
         );
     // Chargement des données
