@@ -56,7 +56,7 @@
               <option value="default">Autre</option>
             </select>
             <label>Type de frais</label>
-          </div>          
+          </div>
           <div class="input-field col s6">
             <input placeholder="Distance en km" id="amount" type="number" step="0.01" class="validate">
             <label for="amount">Montant</label>

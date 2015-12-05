@@ -44,9 +44,24 @@ class Fee
 
   }
 
+  public function fetch($id_fee) {
+    $query = "SELECT id_fee, id_fee_type, creation_date, caption, amount FROM fee WHERE id_fee = $id_fee";
+    $bdd = new BDD();
+    $bdd = $bdd->connect();
+    $res = $bdd->query($query)->fetch();
+    $res->creation_date = date('d/m/Y', strtotime($res->creation_date));
+    return $res;
+  }
+
   public function save() {
     if (!is_null($this->id_fee)) {
-      // update
+      $query = "UPDATE fee SET ID_FEE_TYPE = \"".$this->id_fee_type."\", CREATION_DATE = \"".$this->date_fee."\", CAPTION = \"".$this->caption."\", AMOUNT = $this->amount WHERE ID_FEE = $this->id_fee";
+      $bdd = new BDD();
+      $res = $bdd->connect()->exec($query);
+      if($res > 0)
+        return true;
+      else
+        return false;
     }
     else {
       // insert

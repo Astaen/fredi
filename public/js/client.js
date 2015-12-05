@@ -20,9 +20,10 @@ $(document).ready(function() {
 			labelYearSelect: 'Sélectionner une année',
 
 			// Formats
-			format: 'd mmmm yyyy',
+			format: 'dd/mm/yyyy',
 			formatSubmit: 'yyyy-mm-dd',
-			hiddenName: 'creation_date',
+			hiddenName: '',
+			hiddenSuffix: 'date_fee',
 
 	    selectMonths: true, // Creates a dropdown to control month
 	    selectYears: 5 // Creates a dropdown of 15 years to control year
