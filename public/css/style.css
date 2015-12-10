@@ -79,3 +79,10 @@ footer .container {
 
 /* Modalbox - ajout de frais */
 .modal { width: 30%; }
+
+span.after-input {
+    position: absolute;
+    top: 20%;
+    right: 35px;
+    color: grey;
+}

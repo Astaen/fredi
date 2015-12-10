@@ -34,51 +34,36 @@ $app->get('/note/:id(/:action)', function ($id, $action = null) use($app) {
 
 });
 
+$app->post('/note/:id(/:action)', function ($id, $action = null) use($app) {
+	if(isset($action)) {
+		switch ($action) {
+
+			case 'add_fee':
+				$post = $app->request->post();
+				$fee = new Fee($post);
+				$fee->id_note = $id;
+				
+				if(!$fee->save()) {
+					$err = "No";
+				}
+
+				$app->redirect('/note/'.$fee->id_note);
+				break;
+
+			default:
+				# code...
+				break;
+		}
+	}
+});
+
 $app->get('/notes', function() use($app) {
 	$note = new Note();
 	$notes = $note->fetchAll(2);
 	$app->render('note/list.php', Array('notes' => $notes, 'user' => $_SESSION['userinfo']));
 });
 
-/**
- * FEE - EDITION
- */
-$app->get('/fee/:id(/:action)', function($id = null, $action = null) use($app) {
-	if(isset($id) && isset($action)) {
-		switch ($action) {
-			case 'edit':
-				$fee = new Fee();
-				$edit_fee = $fee->fetch($id);
-				$app->render('note/edit.php', Array('fee' => $edit_fee));
-				break;
 
-			default:
-				# code...
-				break;
-		}
-	}
-});
-$app->post('/fee/:id(/:action)', function($id = null, $action = null) use($app) {
-	if(isset($id) && isset($action)) {
-		switch ($action) {
-			case 'edit':
-				$_POST['id_fee'] = $id; // Array push
-				$fee = new Fee($_POST);
-				$err = $fee->save();
-				if($err) {
-					$app->flash('green', "La modification c'est correctement éffectué."); // Succès
-				} else {
-					$app->flash('red', "La modification n'a pas pû être éffectué."); // Erreur
-				}
-				$edit_fee = $fee->fetch($id);
-				$app->render('note/edit.php', Array('fee' => $edit_fee, 'flash' => $_SESSION['slim.flash']));
-				break;
 
-			default:
-				# code...
-				break;
-		}
-	}
-});
 
 ?>

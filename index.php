@@ -28,14 +28,14 @@ $app->config(array(
 	'templates.path' => './views'
 ));
 
+//Protection des routes
 $app->hook('slim.before.dispatch', function () use($app) {
-	$accessible = Array('login', 'about');
+	$accessible = Array('login', 'about'); //Ces routes ne nécessitent pas d'être authentifié
 	if(!isset($_SESSION['logged'])) {
 		if(!in_array($app->router->getCurrentRoute()->getName(), $accessible)) {
 			$app->redirect('login');
 		}
 	}
-
 });
 
 $app->get('/', function() use($app) {
@@ -51,9 +51,25 @@ $app->get('/', function() use($app) {
 //Custom routes
 require 'routes/login.php';
 require 'routes/notes.php';
+require 'routes/fees.php';
 require 'routes/misc.php';
 
-$app->render('header.php', Array('title' => $app->getName()));
+//Configurer les routes qui n'ont pas de header
+$app->hook('slim.before.dispatch', function () use($app) {
+	$no_header = Array(); //Ces routes ne nécessitent pas de rendre le headers
+	if(!in_array($app->router->getCurrentRoute()->getName(), $no_header)) {
+		$app->render('header.php', Array('title' => $app->getName()));
+	}
+});
+
+//Configurer les routes qui n'ont pas de footer
+$app->hook('slim.after.dispatch', function () use($app) {
+	$no_footer = Array(); //Ces riytes ne nécessitent pas de rendre le footer
+	if(!in_array($app->router->getCurrentRoute()->getName(), $no_footer)) {
+		$app->render('footer.php');
+	}
+});
+
 $app->run();
-$app->render('footer.php');
+
 ?>

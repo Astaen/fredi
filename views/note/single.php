@@ -33,43 +33,43 @@
         		<td><?= $fee->caption; ?></td>
         		<td><?= $fee->amount . " €"; ?></td>
         		<td>
-    				<a href="/fee/<?= $fee->id_fee; ?>/edit" class="waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
+    				<a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
         		</td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 
-  <!-- Modal Structure -->
-  <div id="add_fee" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Ajouter un nouveau frais</h4>
-      <div class="row">
-        <form action="/note/<?= $note->id_note; ?>/add_fee" method="post">
-          <div class="input-field col s12">
-            <input placeholder="Ex: Achat de matériel" id="caption" type="text" class="validate">
-            <label for="caption">Libelle</label>
-          </div>
-          <div class="input-field col s12">
-            <select id="fee_date">
-              <option value="km" selected>Déplacement</option>
-              <option value="default">Autre</option>
-            </select>
-            <label>Type de frais</label>
-          </div>
-          <div class="input-field col s6">
-            <input placeholder="Distance en km" id="amount" type="number" step="0.01" class="validate">
-            <label for="amount">Montant</label>
-          </div>
-          <div class="input-field col s6">
-              <input id="creation_date" type="date" class="datepicker picker__input" placeholder="Cliquer içi pour sélectionner une date">
-              <label for="creation_date">Date de la dépense</label>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Envoyer</a>
-      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Annuler</a>
+<!-- Ajout de frais -->
+<div id="add_fee" class="modal modal-fixed-footer">
+  <form action="/note/<?= $note->id_note; ?>/add_fee" method="post">
+  <div class="modal-content">
+    <h4>Ajouter un nouveau frais</h4>
+    <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Ex: Achat de matériel" name="caption" id="caption" type="text" class="validate">
+          <label for="caption">Libelle</label>
+        </div>
+        <div class="input-field col s12">
+          <select id="fee_type" name="id_fee_type">
+            <option value="km" selected>Déplacement</option>
+            <option value="default">Autre</option>
+          </select>
+          <label>Type de frais</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Distance en km" id="amount" name="amount" type="number" step="0.01" class="validate">
+          <label for="amount">Montant  / Distance parcourue</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="creation_date" type="date" name="creation_date" class="datepicker picker__input" placeholder="Cliquer içi pour sélectionner une date">
+            <label for="creation_date">Date de la dépense</label>
+        </div>
     </div>
   </div>
+  <div class="modal-footer">
+    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat ">Envoyer</a>
+    <button class="modal-action modal-close waves-effect waves-red btn-flat ">Annuler</a>
+  </div>
+  </form>  
+</div>

@@ -55,7 +55,7 @@ class Note
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
         $res = $res->fetchAll();
-
+        
         //get note fees
         foreach ($res as $el) {
             $el->year = date("Y", strtotime($el->year));

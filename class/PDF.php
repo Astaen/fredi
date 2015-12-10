@@ -170,7 +170,6 @@ class PDF extends FPDF
     $pdf->Ln();
     $pdf->Cell(190, 30, utf8_decode("Signature du bénévole"), 0, 0, 'LT', true);
     $pdf->Ln();
-    $pdf->Ln();
 
     $pdf->SetFillColor(210,210,210);
     $pdf->SetDrawColor(180,180,180);

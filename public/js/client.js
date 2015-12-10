@@ -22,25 +22,96 @@ $(document).ready(function() {
 			// Formats
 			format: 'dd/mm/yyyy',
 			formatSubmit: 'yyyy-mm-dd',
-			hiddenName: '',
-			hiddenSuffix: 'date_fee',
+			hiddenName: 'creation_date',
+			hiddenSuffix: '',
 
-	    selectMonths: true, // Creates a dropdown to control month
-	    selectYears: 5 // Creates a dropdown of 15 years to control year
+		    selectMonths: true,
+		    yearSelector: true,
+		    selectYears: 100
 	  });
 
 	  $('select').material_select();
 
-	  $('#fee_date').change(function() {
-	  	var feetype = $('#fee_date').val();
+	  $('#fee_type').change(function() {
+	  	var feetype = $('#fee_type').val();
 	  	switch(feetype) {
 	  		case 'default':
-	  			$('#amount').attr("placeholder", "Montant en euro");
+	  			$('#add_fee #amount').attr("placeholder", "Montant en euro");
 	  			break;
 	  		case 'km':
-	  			$('#amount').attr("placeholder", "Distance en km");
+	  			$('#add_fee #amount').attr("placeholder", "Distance en km");
 	  			break;
 	  	}
+	  	if(feetype == 'km') {
+	  		$("span.after-input.fee-type").text('km');
+	  	} else {
+	  		$("span.after-input.fee-type").text('€');
+	  	}
 	  });
+
+	 // $('.edit_fee').click(function(e) {
+
+	 // 	var id = $(this).attr("data-id");
+	 // 	$.ajax({
+	 // 		url: '/fee/'+id,
+	 // 		type: 'GET'
+	 // 	})
+	 // 	.done(function(msg) {
+	 // 		$('#edit_fee #id_fee').val(msg.id_fee);
+	 // 		$('#edit_fee #caption').val(msg.caption);
+	 // 		$('#edit_fee #fee_type').children().each(function(index, el) {
+	 // 			if($(el).val() == msg.id_fee_type) {
+	 // 				$(el).prop("selected", true);
+	 // 				$('select').material_select();
+	 // 			}
+	 // 		});
+	 // 		$('#edit_fee #creation_date').val(msg.creation_date);
+	 // 		$('#edit_fee #amount').val(msg.amount);
+
+		//   	switch(msg.id_fee_type) {
+		//   		case 'default':
+		//   			$('#edit_fee #amount').attr("placeholder", "Montant en euro");
+		//   			break;
+		//   		case 'km':
+		//   			$('#edit_fee #amount').attr("placeholder", "Distance en km");
+		//   			break;
+		//   	}
+		//   	$('#edit_fee').openModal();	
+	 // 	})
+	 // 	.fail(function() {
+	 // 		Materialize.toast('Erreur serveur, impossible de récupérer le frais.', 4000);
+	 // 	});
+
+	 // })
+
+	 //Envoi du formulaire d'édition du frais
+	 $('#edit_fee button.submit').click(function(e) {
+	 	var fee = {
+	 		id_fee : $('#edit_fee #id_fee').val(),
+	 		id_fee_type : $('#edit_fee #fee_type').val(),
+	 		creation_date : $('#edit_fee #creation_date').val(),
+	 		caption : $('#edit_fee #caption').val(),
+	 		amount : $('#edit_fee #amount').val()
+	 	}
+	 	console.log("POST :");
+	 	console.log(fee);
+	 	$.ajax({
+	 		url: '/fee/'+fee.id_fee+'/edit',
+	 		type: 'POST',
+	 		data: fee
+	 	})
+	 	.done(function(msg) {
+	 		if(msg.err) {
+	 			Materialize.toast('Erreur serveur, impossible de mettre à jour le frais.', 4000);
+	 		} else {
+	 			var interval = setInterval(function(){
+	 				// window.location.reload();
+	 			}, 150);
+	 		}
+	 	})
+	 	.fail(function() {
+	 		Materialize.toast('Erreur serveur, impossible de mettre à jour le frais.', 4000);
+	 	});
+	 })	
 
 });
