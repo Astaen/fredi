@@ -32,4 +32,7 @@
 		</button>		
 
 	</form>
+	<div class="clear"></div>
+	<br>
+	<p class="flow-text align-center">Pas encore inscrit ? <a href="/signin">Cliquez ici pour vous enregistrer.</a></p>
 </div>		

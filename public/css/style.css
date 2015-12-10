@@ -90,3 +90,11 @@ table a.delete i {
     padding: 0 0 0 20px;
     float: right;
 }
+
+.clear {
+    clear: both;
+}
+
+.align-center {
+    text-align: center;
+}

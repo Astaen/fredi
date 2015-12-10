@@ -27,6 +27,10 @@ $app->post('/login', function() use($app) {
 	}
 })->name('login');
 
+$app->get('/signin', function() use($app) {
+	$app->render('signin.php');
+})->name('signin');
+
 $app->get('/logout', function() use($app) {
 	session_destroy();
 	$err = "Utilisateur déconnecté.";

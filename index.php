@@ -30,7 +30,7 @@ $app->config(array(
 
 //Protection des routes
 $app->hook('slim.before.dispatch', function () use($app) {
-	$accessible = Array('login', 'about'); //Ces routes ne nécessitent pas d'être authentifié
+	$accessible = Array('login', 'about', 'signin'); //Ces routes ne nécessitent pas d'être authentifié
 	if(!isset($_SESSION['logged'])) {
 		if(!in_array($app->router->getCurrentRoute()->getName(), $accessible)) {
 			$app->redirect('login');
