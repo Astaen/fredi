@@ -58,10 +58,6 @@ span.f_name {
     border: none;
 }
 
-table .btn {
-    float: right;
-}
-
 .card .collection {
     border: none;
 }
@@ -85,4 +81,12 @@ span.after-input {
     top: 20%;
     right: 35px;
     color: grey;
+}
+
+table a.delete i {
+    line-height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 0 20px;
+    float: right;
 }

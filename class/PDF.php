@@ -129,7 +129,7 @@ class PDF extends FPDF
     $pdf->Ln();
     $pdf->Cell(190, 7, utf8_decode($member->adress." ".$member->postal_code." ".$member->city), 1, 0, 'C', true);
     $pdf->Ln();
-    $pdf->Write(7, utf8_decode("certifie renoncer au remboursemlent des frais ci-dessous et les laisser à l'association: "));
+    $pdf->Write(7, utf8_decode("certifie renoncer au remboursement des frais ci-dessous et les laisser à l'association: "));
     $pdf->Ln();
     $pdf->Cell(190, 7, utf8_decode($member->club->name), 1, 0, 'C', true);
     $pdf->Ln();

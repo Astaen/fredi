@@ -80,6 +80,16 @@ class Fee
       return $res;
     }
   }
+
+  public function delete() {
+    if(!is_null($this->id_fee)) {
+      $query = "DELETE FROM fee WHERE id_fee = ".$this->id_fee;
+      $bdd = new BDD();
+      $bdd = $bdd->connect();
+      $res = $bdd->exec($query);
+      return $res;
+    }
+  }
 }
 
 ?>
