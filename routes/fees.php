@@ -4,10 +4,19 @@ $app->get('/fee/:id(/:action)', function($id = null, $action = null) use($app) {
 	if(isset($id) && isset($action)) {
 		switch ($action) {
 			case 'edit':
-					$fee = new Fee(Array('id_fee' => $id));
-					$fee = $fee->fetch();
-					$app->render('fee/edit.php', Array('fee' => $fee));
+				$fee = new Fee(Array('id_fee' => $id));
+				$fee = $fee->fetch();
+				$app->render('fee/edit.php', Array('fee' => $fee));
 				break;
+
+			case 'delete':
+				$fee = new Fee(Array('id_fee' => $id));
+				$fee = $fee->fetch();
+				$id_note = $fee->id_note;
+				$fee->delete();
+				$app->redirect('/note/'.$id_note);
+				break;
+						
 			default:
 				# code...
 				break;
