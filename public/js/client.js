@@ -76,7 +76,7 @@ $(document).ready(function() {
 		//   			$('#edit_fee #amount').attr("placeholder", "Distance en km");
 		//   			break;
 		//   	}
-		//   	$('#edit_fee').openModal();	
+		//   	$('#edit_fee').openModal();
 	 // 	})
 	 // 	.fail(function() {
 	 // 		Materialize.toast('Erreur serveur, impossible de récupérer le frais.', 4000);
@@ -112,6 +112,20 @@ $(document).ready(function() {
 	 	.fail(function() {
 	 		Materialize.toast('Erreur serveur, impossible de mettre à jour le frais.', 4000);
 	 	});
-	 })	
+	});
 
+	var $window = $(window);
+	// Vérifie la taille de l'écran, et active le menu pour les mobiles/tablettes
+	if($window.width() <= 992) {
+		$(".button-collapse").sideNav();
+	} else {
+		$('.dropdown-button').dropdown();
+	}
+	// Ecoute le redimenssionnement de la fenetre
+	$window.resize(function() {
+		// Si écran mobile/tablette
+	  if($window.width() <= 992) {
+			$(".button-collapse").sideNav();
+		}
+	});
 });
