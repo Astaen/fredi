@@ -6,7 +6,7 @@ class User {
 	public $id_type;
 	public $licence_num;
 	public $mail;
-	private $password;
+	public $password;
 
     public function __construct($args = null) {
         if($args) {
@@ -35,14 +35,17 @@ class User {
 		}
 
         $member = new Member();
-        $this->details = $member->fetch($res->licence_num);        
+        $this->details = $member->fetch($res->licence_num);
 
 		return $this;
 
     }
 
-    public function exists($email, $password) {
-        $user = $this->fetchAll(null, $email, hash("sha256", $password));
+    public function exists($email, $password = null) {
+			if(!is_null($password)) {
+				$password = hash("sha256", $password);
+			}
+        $user = $this->fetchAll(null, $email, $password);
     	if($user) {
     		return $user[0]->id_user;
     	} else {
@@ -77,6 +80,8 @@ class User {
     }
 
 	public function save() {
-
+		$db = new BDD();
+		$this->password = hash("sha256", $this->password);
+		var_dump($db->insert('User', $this));
 	}
 }

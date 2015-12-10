@@ -31,6 +31,36 @@ $app->get('/signin', function() use($app) {
 	$app->render('signin.php');
 })->name('signin');
 
+$app->post('/signin', function() use($app) {
+	$post = $app->request->post();
+	$err = Array();
+	$member = new Member();
+	$user = new User($app->request->post());
+	$user->id_type = 1;
+
+	// Vérifie le numéro de licence
+	if($member->exists($post['licence_num']) != false) {
+		$err[] = "Votre numéro de licence est incorrect.";
+	}
+	else {
+		// Vérifie de l'email
+		if($user->exists($post['mail']) != false) {
+			$err[] = "Cette adresse email est ddéjà prise.";
+		}
+	}
+	// Vérifie si les mdp sont identiques
+	if($post['password'] != $post['password_confirm']) {
+		$err[] = "Vos mots de passe ne sont pas identiques.";
+	}
+	// Vérifie si y'a des erreurs
+	if(empty($err)) {
+		$user->save();
+		$app->redirect('/');
+	} else {
+		$app->render('signin.php', array("errors" => $err));
+	}
+})->name('signin');
+
 $app->get('/logout', function() use($app) {
 	session_destroy();
 	$err = "Utilisateur déconnecté.";

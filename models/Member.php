@@ -18,7 +18,7 @@ class Member {
                 if(property_exists("Member", $key)) {
                     $this->$key = $value;
                 }
-            }           
+            }
         }
     }
 
@@ -39,19 +39,37 @@ class Member {
         //get member's club
         $club = new Club();
         $this->club = $club->fetch($this->id_club);
-        
+
 		return $this;
 
     }
 
-    public function fetchAll() {
+		public function exists($licence) {
+        $user = $this->fetchAll($licence);
+    	if($user) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 
-        $query = "SELECT * FROM club_member WHERE 1";            
+		public function fetchAll($licence = null) {
+
+        $query = "SELECT * FROM user WHERE 1";
+        if(!is_null($licence)) {
+          $query .= " AND LICENCE_NUM = " . $licence;
+        }
+
+        // var_dump($query);
 
         $bdd = new BDD();
         $bdd = $bdd->connect();
         $res = $bdd->query($query);
-        return $res->fetchAll();
+        if($res) {
+        	return $res->fetchAll();
+        } else {
+        	return false;
+        }
 
     }
 
