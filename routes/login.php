@@ -4,6 +4,7 @@ $app->get('/login', function() use($app) {
 	$app->render('login.php');
 })->name('login');
 
+
 $app->post('/login', function() use($app) {
 	//Récuperation des données envoyées en POST
 	$post = $app->request->post();
@@ -27,9 +28,11 @@ $app->post('/login', function() use($app) {
 	}
 })->name('login');
 
+
 $app->get('/signin', function() use($app) {
 	$app->render('signin.php');
 })->name('signin');
+
 
 $app->post('/signin', function() use($app) {
 	$post = $app->request->post();
@@ -54,12 +57,14 @@ $app->post('/signin', function() use($app) {
 	}
 	// Vérifie si y'a des erreurs
 	if(empty($err)) {
-		$user->save();
+		$user = $user->save();
+		$note = new Note();
 		$app->redirect('/');
 	} else {
 		$app->render('signin.php', array("errors" => $err));
 	}
 })->name('signin');
+
 
 $app->get('/logout', function() use($app) {
 	session_destroy();

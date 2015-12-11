@@ -9,7 +9,7 @@
                 <i class="large mdi-navigation-menu"></i>
             </a>
             <ul>
-                <li><a class="btn-floating blue tooltipped modal-trigger" onclick="$('#add_fee').openModal();" alt="Ajouter un frais" data-position="top" data-delay="50" data-tooltip="Ajouter un frais"><i class="material-icons">add</i></a></li>
+                <?php if($note->id_note_state == 'open') { ?><li><a class="btn-floating blue tooltipped modal-trigger" onclick="$('#add_fee').openModal();" alt="Ajouter un frais" data-position="top" data-delay="50" data-tooltip="Ajouter un frais"><i class="material-icons">add</i></a></li><?php } ?>
                 <li><a class="btn-floating green tooltipped" alt="Télécharger la fiche" data-position="top" data-delay="50" data-tooltip="Télécharger la fiche" target="_blank" href="/note/<?= $note->id_note; ?>/pdf"><i class="material-icons">file_download</i></a></li>
             </ul>
         </div>
@@ -33,8 +33,12 @@
         		<td><?= $fee->caption; ?></td>
         		<td><?= $fee->amount . " €"; ?></td>
         		<td>
-            <a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
-    				<a href="/fee/<?= $fee->id_fee; ?>/delete" onclick="return confirm('Voulez-vous vraiment supprimer ce frais ?')" class="delete grey-text"><i class="material-icons">close</i></a>
+            <?php if($note->id_note_state == 'open') { ?>
+              <a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
+    				  <a href="/fee/<?= $fee->id_fee; ?>/delete" onclick="return confirm('Voulez-vous vraiment supprimer ce frais ?')" class="delete grey-text"><i class="material-icons">close</i></a>
+            <?php } else { ?>
+              <p>Modification désactivée.</p>
+            <?php } ?>
         		</td>
             </tr>
         <?php endforeach; ?>

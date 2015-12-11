@@ -59,7 +59,7 @@ $app->post('/note/:id(/:action)', function ($id, $action = null) use($app) {
 
 $app->get('/notes', function() use($app) {
 	$note = new Note();
-	$notes = $note->fetchAll(2);
+	$notes = $note->fetchAll($_SESSION['userinfo']->id_user);
 	$app->render('note/list.php', Array('notes' => $notes, 'user' => $_SESSION['userinfo']));
 });
 

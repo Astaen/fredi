@@ -82,6 +82,7 @@ class User {
 	public function save() {
 		$db = new BDD();
 		$this->password = hash("sha256", $this->password);
-		var_dump($db->insert('User', $this));
+		$res = $db->insert('User', $this);
+        return $res;
 	}
 }

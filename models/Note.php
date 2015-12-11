@@ -50,6 +50,7 @@ class Note
         if(!is_null($year)) {
           $query .= ' AND YEAR(YEAR) = "'. $year . '"';
         }
+        $query .= ' ORDER BY YEAR DESC';
 
         $bdd = new BDD();
         $bdd = $bdd->connect();
@@ -79,12 +80,67 @@ class Note
         return $fees;
     }
 
+    public function setState($state) {
+        $this->id_note_state = $state;
+    }
+
+    public function isDUe($user_id) {
+
+        $notes = $this->fetchAll($user_id);
+
+        //User has notes
+        if(sizeof($notes)) {        
+            $note = new Note($notes[0]);
+
+            $thisYear = date('Y');
+            $today = new DateTime("now");
+            $deadline = new DateTime($thisYear.'-12-24'); //deadline is 24 December
+
+            //note is past due
+            if($today > $deadline) {
+                if($note->id_note_state == 'open') {
+                    $note->setState('closed');
+                    $note->save();
+                }       
+            }
+
+            //not is from last year
+            if($note->year < $thisYear) {
+                if($note->id_note_state == 'open') {
+                    $note->setState('closed');
+                    $note->save();
+                }
+
+                //we open a new one
+                $user_id = $note->id_user;
+                $note = new Note(Array('id_user' => $user_id, 'id_note_state' => 'open', 'year' => $today->format('Y-m-d')));
+                $note->save();
+            }  
+        //User has no notes, create one     
+        } else {
+            $note = new Note();
+            $note->id_user = $user_id;
+            $note->id_note_state = 'open';
+            $note->year = date('Y-m-d');
+            $note->save();
+        }
+    }
+
     public function save() {
 
         if(!is_null($this->id_note)) {
-          //update
+            $query = 'UPDATE `note` SET `ID_NOTE_STATE`="'.$this->id_note_state.'" WHERE ID_NOTE = '.$this->id_note;
+            // var_dump($query);
+            $bdd = new BDD();
+            $bdd = $bdd->connect();
+            $res = $bdd->exec($query);
         } else {
-          //insert
+            $query = 'INSERT INTO `note`(`ID_NOTE_STATE`, `ID_USER`, `YEAR`) VALUES ("'.$this->id_note_state.'","'.$this->id_user.'","'.$this->year.'")';
+            // var_dump($query);
+            $bdd = new BDD();
+            $bdd = $bdd->connect();
+            $res = $bdd->query($query);
+            return $res;
         }
     }
 }

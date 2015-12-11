@@ -2,6 +2,7 @@
 ini_set('xdebug.var_display_max_depth', 5);
 ini_set('xdebug.var_display_max_children', 999);
 ini_set('xdebug.var_display_max_data', 9999);
+date_default_timezone_set("UTC");
 
 // require './vendor/fpdf/fpdf.php';
 require 'Slim/Slim.php';
@@ -9,9 +10,7 @@ require 'Slim/Slim.php';
 
 //importation des fonctions de
 require("class/bdd.php");
-require("class/fredi.php");
 
-//importation des modèles
 require("models/Club.php");
 require("models/User.php");
 require("models/Member.php");
@@ -40,8 +39,11 @@ $app->hook('slim.before.dispatch', function () use($app) {
 
 $app->get('/', function() use($app) {
 	if(isset($_SESSION['logged'])) {
+		$user_id = $_SESSION['userinfo']->id_user;
+
 		$note = new Note();
-		$notes = $note->fetchAll($_SESSION['userinfo']->id_user);
+		$note->isDue($user_id);
+		$notes = $note->fetchAll($user_id);
 		$app->render('user/main.php', array('notes' => $notes, 'user' => $_SESSION['userinfo']));
 	} else {
 		$app->redirect('/login');

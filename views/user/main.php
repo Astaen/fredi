@@ -8,12 +8,10 @@
     </div>
 
     <ul class="collection with-header">
-      <li class="collection-header"><h4>Détails</h4></li>
-      <?php foreach($notes as $note): ?>
-        <?php foreach($note->fees as $fee): ?>    
+        <?php if(sizeof($notes[0]->fees)): ?><li class="collection-header"><h4>Détails</h4></li><?php endif; ?>
+        <?php foreach($notes[0]->fees as $fee): ?>    
           <li class="collection-item"><?= date('d/m/Y',strtotime($fee->creation_date)) . " - " . $fee->caption; ?><span class="secondary-content"><?= $fee->amount . " €"; ?></span></li>
-        <?php endforeach; ?>
-      <?php endforeach; ?>      
+        <?php endforeach; ?>     
     </ul>
 
 </div>
@@ -34,9 +32,9 @@
      </tr>
    </thead>
    <tbody>
-     <?php foreach ($notes as $note):?>
+     <?php foreach ($notes as $index => $note):?>
        <tr>
-         <td><?= $note->id_note; ?></td>
+         <td><?= $index+1; ?></td>
          <td><?= $note->year; ?></td>
          <td><?= $note->total; ?> €</td>
          <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
