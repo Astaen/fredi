@@ -28,7 +28,10 @@
          <td><?= $note->year; ?></td>
          <td><?= $total_amount; ?> €</td>
          <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
-         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a></td>
+         <td>
+           <a class="waves-effect waves-light btn blue hide-on-med-and-down" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a>
+           <a class="waves-effect waves-light btn blue hide-on-large-only" href="/note/<?= $note->id_note; ?>"><i class="material-icons">pageview</i></a>
+         </td>
        </tr>
      <?php endforeach; ?>
    </tbody>

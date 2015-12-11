@@ -34,7 +34,8 @@
         		<td><?= $fee->amount . " €"; ?></td>
         		<td>
             <?php if($note->id_note_state == 'open') { ?>
-              <a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue"><i class="material-icons left">mode_edit</i>Editer</a>
+              <a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue hide-on-med-and-down"><i class="material-icons left">mode_edit</i>Editer</a>
+              <a href="/fee/<?= $fee->id_fee; ?>/edit" class="edit_fee waves-effect waves-light btn blue hide-on-large-only"><i class="material-icons">mode_edit</i></a>
     				  <a href="/fee/<?= $fee->id_fee; ?>/delete" onclick="return confirm('Voulez-vous vraiment supprimer ce frais ?')" class="delete grey-text"><i class="material-icons">close</i></a>
             <?php } else { ?>
               <p>Modification désactivée.</p>
@@ -76,5 +77,5 @@
     <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat ">Envoyer</a>
     <button type="reset" class="modal-action modal-close waves-effect waves-red btn-flat ">Annuler</a>
   </div>
-  </form>  
+  </form>
 </div>

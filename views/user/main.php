@@ -9,9 +9,9 @@
 
     <ul class="collection with-header">
         <?php if(sizeof($notes[0]->fees)): ?><li class="collection-header"><h4>Détails</h4></li><?php endif; ?>
-        <?php foreach($notes[0]->fees as $fee): ?>    
+        <?php foreach($notes[0]->fees as $fee): ?>
           <li class="collection-item"><?= date('d/m/Y',strtotime($fee->creation_date)) . " - " . $fee->caption; ?><span class="secondary-content"><?= $fee->amount . " €"; ?></span></li>
-        <?php endforeach; ?>     
+        <?php endforeach; ?>
     </ul>
 
 </div>
@@ -38,7 +38,10 @@
          <td><?= $note->year; ?></td>
          <td><?= $note->total; ?> €</td>
          <td><div class="chip <?= $note->id_note_state; ?>"><?= $note->libelle; ?></div></td>
-         <td><a class="waves-effect waves-light btn blue" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a></td>
+         <td>
+           <a class="waves-effect waves-light btn blue hide-on-large-only" href="/note/<?= $note->id_note; ?>"><i class="material-icons">pageview</i></a>
+           <a class="waves-effect waves-light btn blue hide-on-med-and-down" href="/note/<?= $note->id_note; ?>"><i class="material-icons left">pageview</i>Voir la fiche</a>
+         </td>
        </tr>
      <?php endforeach; ?>
    </tbody>
