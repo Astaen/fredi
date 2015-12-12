@@ -30,9 +30,23 @@ $app->config(array(
 //Protection des routes
 $app->hook('slim.before.dispatch', function () use($app) {
 	$accessible = Array('login', 'about', 'signin'); //Ces routes ne nécessitent pas d'être authentifié
-	if(!isset($_SESSION['logged'])) {
+	if(!isset($_SESSION['logged']) && empty($app->getCookie('fredi'))) {
 		if(!in_array($app->router->getCurrentRoute()->getName(), $accessible)) {
 			$app->redirect('login');
+		}
+	}
+	if(!isset($_SESSION['logged']) && !empty($app->getCookie('fredi'))) {
+		$cookie = explode("==", $app->getCookie('fredi'));
+		$email = $cookie[0];
+		$password = $cookie[1];
+		$user = new User();
+		//Si l'utilisateur existe
+		$user->id_user = $user->exists($email, $password, true);
+		if($user->id_user) {
+			//On récupère les infos de l'utilisateurs
+			$user = $user->fetch();
+			$_SESSION['logged'] = true;
+			$_SESSION['userinfo'] = $user;
 		}
 	}
 });
@@ -40,12 +54,12 @@ $app->hook('slim.before.dispatch', function () use($app) {
 $app->get('/', function() use($app) {
 	if(isset($_SESSION['logged'])) {
 		$user_id = $_SESSION['userinfo']->id_user;
-
 		$note = new Note();
 		$note->isDue($user_id);
 		$notes = $note->fetchAll($user_id);
-		$app->render('user/main.php', array('notes' => $notes, 'user' => $_SESSION['userinfo']));
-	} else {
+		$app->render('user/main.php', array('notes' => $notes, 'user' => $_SESSION['userinfo'], 'app' => $app));
+	}
+	else {
 		$app->redirect('/login');
 	}
 });

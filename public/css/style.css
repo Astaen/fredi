@@ -98,3 +98,8 @@ table a.delete i {
 .align-center {
     text-align: center;
 }
+
+[type="checkbox"].filled-in:checked+label:after {
+  border-color: #1e88e5;
+  background-color: #1e88e5;
+}

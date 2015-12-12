@@ -41,11 +41,14 @@ class User {
 
     }
 
-    public function exists($email, $password = null) {
-			if(!is_null($password)) {
+    public function exists($email, $password = null, $isCookie = false) {
+			if(!is_null($password) && !$isCookie) {
 				$password = hash("sha256", $password);
 			}
-        $user = $this->fetchAll(null, $email, $password);
+			if($isCookie) {
+				$email = base64_decode($email);
+			}
+      $user = $this->fetchAll(null, $email, $password);
     	if($user) {
     		return $user[0]->id_user;
     	} else {

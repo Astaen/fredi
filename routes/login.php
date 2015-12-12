@@ -17,9 +17,12 @@ $app->post('/login', function() use($app) {
 	if($user->id_user) {
 		//On récupère les infos de l'utilisateurs
 		$user = $user->fetch();
-
 		$_SESSION['logged'] = true;
 		$_SESSION['userinfo'] = $user;
+		// Crée un cookie avec email et pwd crypté séparé par '==' si Remember Me est coché
+		if(isset($post['rememberme'])) {
+			$app->setCookie('fredi', base64_encode($post['email']) . '==' . hash('sha256', $post['password']) , '2 days');
+		}
 
 		$app->redirect('/');
 	} else {
@@ -68,6 +71,7 @@ $app->post('/signin', function() use($app) {
 
 $app->get('/logout', function() use($app) {
 	session_destroy();
+	$app->deleteCookie('fredi');
 	$err = "Utilisateur déconnecté.";
 	$app->redirect('/login');
 })->name('logout');
