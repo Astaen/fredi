@@ -1,5 +1,5 @@
 <?php
-require('/vendor/fpdf.php');
+require($_SERVER['DOCUMENT_ROOT'].'/vendor/fpdf.php');
 
 class PDF extends FPDF
 {
