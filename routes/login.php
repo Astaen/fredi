@@ -1,5 +1,11 @@
 <?php
 
+/**
+ *
+ * Route principal du login
+ *
+ */
+
 $app->get('/login', function() use($app) {
 	$app->render('login.php');
 })->name('login');
