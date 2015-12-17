@@ -30,12 +30,12 @@ $app->config(array(
 //Protection des routes
 $app->hook('slim.before.dispatch', function () use($app) {
 	$accessible = Array('login', 'about', 'signin'); //Ces routes ne nécessitent pas d'être authentifié
-	if(!isset($_SESSION['logged']) && isset($app->getCookie('fredi'))) {
+	if( !isset($_SESSION['logged']) && $app->getCookie('fredi') ) {
 		if(!in_array($app->router->getCurrentRoute()->getName(), $accessible)) {
 			$app->redirect('login');
 		}
 	}
-	if(!isset($_SESSION['logged']) && !isset($app->getCookie('fredi'))) {
+	if( !isset($_SESSION['logged']) && !$app->getCookie('fredi') ) {
 		$cookie = explode("==", $app->getCookie('fredi'));
 		$email = $cookie[0];
 		$password = $cookie[1];
